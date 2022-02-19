@@ -16,6 +16,8 @@
 		44F6BA6927C164B4006F2EE7 /* InterviewProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F6BA6827C164B4006F2EE7 /* InterviewProjectUITests.swift */; };
 		44F6BA6B27C164B4006F2EE7 /* InterviewProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F6BA6A27C164B4006F2EE7 /* InterviewProjectUITestsLaunchTests.swift */; };
 		44F6BA7927C16881006F2EE7 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 44F6BA7827C16881006F2EE7 /* Swinject */; };
+		44F6BA7C27C16EA2006F2EE7 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F6BA7B27C16EA2006F2EE7 /* DIContainer.swift */; };
+		44F6BA7E27C16F36006F2EE7 /* SportEventsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F6BA7D27C16F36006F2EE7 /* SportEventsContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		44F6BA6427C164B4006F2EE7 /* InterviewProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterviewProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F6BA6827C164B4006F2EE7 /* InterviewProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewProjectUITests.swift; sourceTree = "<group>"; };
 		44F6BA6A27C164B4006F2EE7 /* InterviewProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		44F6BA7B27C16EA2006F2EE7 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		44F6BA7D27C16F36006F2EE7 /* SportEventsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		44F6BA4627C164B2006F2EE7 /* InterviewProject */ = {
 			isa = PBXGroup;
 			children = (
+				44F6BA7A27C16E76006F2EE7 /* DI */,
 				44F6BA4727C164B2006F2EE7 /* AppDelegate.swift */,
 				44F6BA4927C164B2006F2EE7 /* SceneDelegate.swift */,
 				44F6BA4B27C164B2006F2EE7 /* ViewController.swift */,
@@ -124,6 +129,15 @@
 				44F6BA6A27C164B4006F2EE7 /* InterviewProjectUITestsLaunchTests.swift */,
 			);
 			path = InterviewProjectUITests;
+			sourceTree = "<group>";
+		};
+		44F6BA7A27C16E76006F2EE7 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				44F6BA7B27C16EA2006F2EE7 /* DIContainer.swift */,
+				44F6BA7D27C16F36006F2EE7 /* SportEventsContainer.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +276,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44F6BA7C27C16EA2006F2EE7 /* DIContainer.swift in Sources */,
+				44F6BA7E27C16F36006F2EE7 /* SportEventsContainer.swift in Sources */,
 				44F6BA4C27C164B2006F2EE7 /* ViewController.swift in Sources */,
 				44F6BA4827C164B2006F2EE7 /* AppDelegate.swift in Sources */,
 				44F6BA4A27C164B2006F2EE7 /* SceneDelegate.swift in Sources */,
