@@ -16,8 +16,8 @@ struct SportEventsContainer {
     }
     
     func register() {
-        container.register(ViewController.self) { _ in
-            ViewController()
+        container.register(SportEventsViewController.self) { _ in
+            SportEventsViewController()
         }
     }
 }
