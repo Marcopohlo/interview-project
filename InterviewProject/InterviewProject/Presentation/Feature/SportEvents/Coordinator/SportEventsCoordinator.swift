@@ -19,7 +19,8 @@ final class SportEventsCoordinator: Coordinator {
     
     // MARK: - Coordinator
     func start() {
-        let sportEventViewController = DIContainer.container.resolve(SportEventsViewController.self)!
+        let sportEventsViewModel = DIContainer.container.resolve(SportEventsViewModelProtocol.self)!
+        let sportEventViewController = DIContainer.container.resolve(SportEventsViewController.self, argument: sportEventsViewModel)!
         navigationController.pushViewController(sportEventViewController, animated: true)
     }
 }

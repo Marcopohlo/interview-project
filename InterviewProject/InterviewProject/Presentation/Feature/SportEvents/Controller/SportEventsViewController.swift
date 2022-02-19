@@ -8,9 +8,23 @@
 import UIKit
 
 final class SportEventsViewController: UIViewController {
-    
+    // MARK: - Properties
     private let tableView = UITableView()
+    private let viewModel: SportEventsViewModelProtocol
     
+    // MARK: - Initializers
+    init(viewModel: SportEventsViewModelProtocol) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Life cycle
     override func loadView() {
         view = tableView
     }
@@ -19,8 +33,14 @@ final class SportEventsViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Sport Events"
-
-        // Do any additional setup after loading the view.
+        bindViewModel()
     }
 
+}
+
+// MARK: - Data bindings
+private extension SportEventsViewController {
+    func bindViewModel() {
+        viewModel.bind(to: tableView)
+    }
 }

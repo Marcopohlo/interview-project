@@ -16,8 +16,12 @@ struct SportEventsContainer {
     }
     
     func register() {
-        container.register(SportEventsViewController.self) { _ in
-            SportEventsViewController()
+        container.register(SportEventsViewModelProtocol.self) { _ in
+            SportEventsViewModel()
+        }
+        
+        container.register(SportEventsViewController.self) { _, viewModel in
+            SportEventsViewController(viewModel: viewModel)
         }
     }
 }
