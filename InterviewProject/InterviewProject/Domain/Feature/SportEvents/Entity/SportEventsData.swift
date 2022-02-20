@@ -7,8 +7,19 @@
 
 import Foundation
 
-struct SportEventsData: Codable, Hashable {
+struct SportEventsData: Hashable {
     var name: String
     var place: String
-    var duration: String
+    var duration: Int
+    
+    var asDictionary: [String: Any] {
+        let mirror = Mirror(reflecting: self)
+        let dictionary = Dictionary(uniqueKeysWithValues: mirror.children.lazy.compactMap { (label: String?, value: Any) -> (String, Any)? in
+            guard let label = label else {
+                return nil
+            }
+            return (label, value)
+        })
+        return dictionary
+    }
 }

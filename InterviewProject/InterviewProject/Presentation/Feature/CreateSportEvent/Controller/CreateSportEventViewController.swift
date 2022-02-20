@@ -67,6 +67,6 @@ private extension CreateSportEventViewController {
     }
     
     func didTapSaveButton() {
-        
+        viewModel.save()
     }
 }

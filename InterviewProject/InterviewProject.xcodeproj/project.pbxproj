@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4424D46327C29EA5009B00FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4424D46227C29EA5009B00FC /* GoogleService-Info.plist */; };
+		4424D46927C2A11C009B00FC /* StorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D46827C2A11C009B00FC /* StorageRepository.swift */; };
+		4424D46C27C2A265009B00FC /* StorageManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D46B27C2A265009B00FC /* StorageManagerProtocol.swift */; };
+		4424D46E27C2A27E009B00FC /* StorageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D46D27C2A27E009B00FC /* StorageRepositoryProtocol.swift */; };
+		4424D47127C2A3D5009B00FC /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D47027C2A3D5009B00FC /* FirebaseStorageManager.swift */; };
+		4424D47427C2A485009B00FC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 4424D47327C2A485009B00FC /* FirebaseFirestore */; };
+		4424D47627C2A632009B00FC /* StorageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D47527C2A632009B00FC /* StorageContainer.swift */; };
+		4424D47A27C2AFAD009B00FC /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D47927C2AFAD009B00FC /* Sequence+Extensions.swift */; };
+		4424D47C27C2B0D9009B00FC /* StorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D47B27C2B0D9009B00FC /* StorageType.swift */; };
 		447263D127C17E2A0006663D /* SportEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D027C17E2A0006663D /* SportEventsViewModel.swift */; };
 		447263D427C180260006663D /* SportEventsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D327C180260006663D /* SportEventsProtocols.swift */; };
 		447263D627C1852F0006663D /* SportEventsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D527C1852F0006663D /* SportEventsItemViewModel.swift */; };
@@ -52,6 +61,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4424D46227C29EA5009B00FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4424D46827C2A11C009B00FC /* StorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRepository.swift; sourceTree = "<group>"; };
+		4424D46B27C2A265009B00FC /* StorageManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerProtocol.swift; sourceTree = "<group>"; };
+		4424D46D27C2A27E009B00FC /* StorageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRepositoryProtocol.swift; sourceTree = "<group>"; };
+		4424D47027C2A3D5009B00FC /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		4424D47527C2A632009B00FC /* StorageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageContainer.swift; sourceTree = "<group>"; };
+		4424D47927C2AFAD009B00FC /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
+		4424D47B27C2B0D9009B00FC /* StorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageType.swift; sourceTree = "<group>"; };
 		447263D027C17E2A0006663D /* SportEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsViewModel.swift; sourceTree = "<group>"; };
 		447263D327C180260006663D /* SportEventsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsProtocols.swift; sourceTree = "<group>"; };
 		447263D527C1852F0006663D /* SportEventsItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsItemViewModel.swift; sourceTree = "<group>"; };
@@ -88,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44F6BA7927C16881006F2EE7 /* Swinject in Frameworks */,
+				4424D47427C2A485009B00FC /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +126,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4424D46727C2A106009B00FC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4424D46A27C2A238009B00FC /* Storage */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4424D46A27C2A238009B00FC /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				4424D46F27C2A3BA009B00FC /* Firebase */,
+				4424D46827C2A11C009B00FC /* StorageRepository.swift */,
+				4424D46D27C2A27E009B00FC /* StorageRepositoryProtocol.swift */,
+				4424D46B27C2A265009B00FC /* StorageManagerProtocol.swift */,
+				4424D47B27C2B0D9009B00FC /* StorageType.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		4424D46F27C2A3BA009B00FC /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				4424D47027C2A3D5009B00FC /* FirebaseStorageManager.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		4424D47227C2A485009B00FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4424D47727C2AF95009B00FC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4424D47827C2AFA0009B00FC /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4424D47827C2AFA0009B00FC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4424D47927C2AFAD009B00FC /* Sequence+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		447263D227C180100006663D /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +300,7 @@
 				44F6BA5D27C164B4006F2EE7 /* InterviewProjectTests */,
 				44F6BA6727C164B4006F2EE7 /* InterviewProjectUITests */,
 				44F6BA4527C164B2006F2EE7 /* Products */,
+				4424D47227C2A485009B00FC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -247,6 +317,8 @@
 		44F6BA4627C164B2006F2EE7 /* InterviewProject */ = {
 			isa = PBXGroup;
 			children = (
+				4424D47727C2AF95009B00FC /* Utilities */,
+				4424D46727C2A106009B00FC /* Services */,
 				447263DD27C19AF80006663D /* Domain */,
 				44F6BA7F27C170EC006F2EE7 /* Presentation */,
 				44F6BA7A27C16E76006F2EE7 /* DI */,
@@ -255,6 +327,7 @@
 				44F6BA5027C164B4006F2EE7 /* Assets.xcassets */,
 				44F6BA5227C164B4006F2EE7 /* LaunchScreen.storyboard */,
 				44F6BA5527C164B4006F2EE7 /* Info.plist */,
+				4424D46227C29EA5009B00FC /* GoogleService-Info.plist */,
 			);
 			path = InterviewProject;
 			sourceTree = "<group>";
@@ -281,6 +354,7 @@
 			children = (
 				44F6BA7B27C16EA2006F2EE7 /* DIContainer.swift */,
 				44F6BA7D27C16F36006F2EE7 /* SportEventsContainer.swift */,
+				4424D47527C2A632009B00FC /* StorageContainer.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -368,6 +442,7 @@
 			name = InterviewProject;
 			packageProductDependencies = (
 				44F6BA7827C16881006F2EE7 /* Swinject */,
+				4424D47327C2A485009B00FC /* FirebaseFirestore */,
 			);
 			productName = InterviewProject;
 			productReference = 44F6BA4427C164B2006F2EE7 /* InterviewProject.app */;
@@ -443,6 +518,7 @@
 			mainGroup = 44F6BA3B27C164B2006F2EE7;
 			packageReferences = (
 				44F6BA7727C16880006F2EE7 /* XCRemoteSwiftPackageReference "Swinject" */,
+				4424D46427C29F79009B00FC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 44F6BA4527C164B2006F2EE7 /* Products */;
 			projectDirPath = "";
@@ -462,6 +538,7 @@
 			files = (
 				44F6BA5427C164B4006F2EE7 /* LaunchScreen.storyboard in Resources */,
 				44F6BA5127C164B4006F2EE7 /* Assets.xcassets in Resources */,
+				4424D46327C29EA5009B00FC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,21 +565,28 @@
 			files = (
 				447263F227C22C410006663D /* UIBarButtonItem+Extensions.swift in Sources */,
 				44F6BA8727C174B3006F2EE7 /* AppCoordinator.swift in Sources */,
+				4424D46C27C2A265009B00FC /* StorageManagerProtocol.swift in Sources */,
 				447263F527C230DD0006663D /* CreateSportEventView.swift in Sources */,
 				447263D627C1852F0006663D /* SportEventsItemViewModel.swift in Sources */,
 				447263E627C221610006663D /* CreateSportEventViewController.swift in Sources */,
+				4424D47127C2A3D5009B00FC /* FirebaseStorageManager.swift in Sources */,
 				447263DC27C199750006663D /* SportEventsViewState.swift in Sources */,
 				447263EC27C222880006663D /* CreateSportEventViewModel.swift in Sources */,
+				4424D46927C2A11C009B00FC /* StorageRepository.swift in Sources */,
 				447263E927C2218E0006663D /* CreateSportEventCoordinator.swift in Sources */,
 				44F6BA8A27C176FF006F2EE7 /* SportEventsCoordinator.swift in Sources */,
 				44F6BA8427C172F6006F2EE7 /* SportEventsViewController.swift in Sources */,
 				447263D927C18D0D0006663D /* SportEventsCell.swift in Sources */,
+				4424D46E27C2A27E009B00FC /* StorageRepositoryProtocol.swift in Sources */,
 				44F6BA7C27C16EA2006F2EE7 /* DIContainer.swift in Sources */,
 				447263EF27C222C40006663D /* CreateSportEventProtocols.swift in Sources */,
+				4424D47C27C2B0D9009B00FC /* StorageType.swift in Sources */,
+				4424D47627C2A632009B00FC /* StorageContainer.swift in Sources */,
 				44F6BA7E27C16F36006F2EE7 /* SportEventsContainer.swift in Sources */,
 				447263E227C19B2E0006663D /* SportEventsData.swift in Sources */,
 				447263D427C180260006663D /* SportEventsProtocols.swift in Sources */,
 				44F6BA4827C164B2006F2EE7 /* AppDelegate.swift in Sources */,
+				4424D47A27C2AFAD009B00FC /* Sequence+Extensions.swift in Sources */,
 				447263D127C17E2A0006663D /* SportEventsViewModel.swift in Sources */,
 				44F6BA4A27C164B2006F2EE7 /* SceneDelegate.swift in Sources */,
 			);
@@ -840,6 +924,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4424D46427C29F79009B00FC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 		44F6BA7727C16880006F2EE7 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -851,6 +943,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4424D47327C2A485009B00FC /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4424D46427C29F79009B00FC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		44F6BA7827C16881006F2EE7 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 44F6BA7727C16880006F2EE7 /* XCRemoteSwiftPackageReference "Swinject" */;

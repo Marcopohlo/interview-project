@@ -21,6 +21,9 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let diContainer = DIContainer()
         diContainer.register()
         
+        let storageRepository = DIContainer.container.resolve(StorageRepositoryProtocol.self)!
+        storageRepository.start()
+        
         let navigationController = UINavigationController()
         let appCoordinator = AppCoordinator(navigationController: navigationController)
         appCoordinator.start()

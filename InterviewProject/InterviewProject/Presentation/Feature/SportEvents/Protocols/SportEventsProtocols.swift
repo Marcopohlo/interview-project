@@ -11,6 +11,7 @@ protocol SportEventsViewModelProtocol: AnyObject {
     var createSportEventHandler: (() -> Void)? { get set }
     
     func bind(to tableView: UITableView)
+    func start()
 }
 
 protocol SportEventsItemViewModelProtocol {

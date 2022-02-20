@@ -8,5 +8,5 @@
 import Foundation
 
 protocol CreateSportEventViewModelProtocol {
-    
+    func save()
 }

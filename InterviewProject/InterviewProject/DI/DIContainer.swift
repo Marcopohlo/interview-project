@@ -12,6 +12,9 @@ struct DIContainer {
     static let container = Container()
     
     func register() {
+        let storage = StorageContainer(container: Self.container)
+        storage.register()
+        
         let sportEvents = SportEventsContainer(container: Self.container)
         sportEvents.register()
     }
