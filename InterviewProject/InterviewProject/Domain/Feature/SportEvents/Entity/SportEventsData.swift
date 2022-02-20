@@ -10,7 +10,7 @@ import Foundation
 struct SportEventsData: Hashable {
     var name: String
     var place: String
-    var duration: Int
+    var duration: TimeInterval
     
     var asDictionary: [String: Any] {
         let mirror = Mirror(reflecting: self)

@@ -16,7 +16,7 @@ struct SportEventsItemViewModel: SportEventsItemViewModelProtocol, Hashable {
         event.place
     }
     var duration: String {
-        "\(event.duration) minutes"
+        event.duration.asString(style: .positional)
     }
     private let event: SportEventsData
     

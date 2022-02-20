@@ -19,7 +19,7 @@ final class FirebaseStorageManager: StorageManagerProtocol {
             let data = snapshot.data()
             let name = data["name"] as? String ?? ""
             let place = data["place"] as? String ?? ""
-            let duration = data["duration"] as? Int ?? 0
+            let duration = data["duration"] as? TimeInterval ?? 0
 
             return SportEventsData(name: name, place: place, duration: duration)
         }
