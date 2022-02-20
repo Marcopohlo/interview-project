@@ -41,10 +41,10 @@ final class SportEventsViewModel: SportEventsViewModelProtocol {
     func fetchData() {
         Task {
             do {
-                let data = try await storageRepository.loadData(from: .server)
+                let data = try await storageRepository.loadData(from: .server, .local)
                 var snapshot = NSDiffableDataSourceSnapshot<Int, SportEvent>()
                 snapshot.appendSections([0])
-                snapshot.appendItems(data)
+                snapshot.appendItems(data.compactMap { $0 as? SportEvent })
                 
                 await dataSource?.apply(snapshot, animatingDifferences: false)
             } catch {

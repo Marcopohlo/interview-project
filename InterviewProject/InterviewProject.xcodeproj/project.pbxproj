@@ -17,6 +17,9 @@
 		4424D47A27C2AFAD009B00FC /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D47927C2AFAD009B00FC /* Sequence+Extensions.swift */; };
 		4424D47C27C2B0D9009B00FC /* StorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D47B27C2B0D9009B00FC /* StorageType.swift */; };
 		4424D47F27C2E0AC009B00FC /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D47E27C2E0AC009B00FC /* TimeInterval+Extensions.swift */; };
+		4424D48227C2E3B2009B00FC /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 4424D48127C2E3B2009B00FC /* Realm */; };
+		4424D48427C2E3B2009B00FC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4424D48327C2E3B2009B00FC /* RealmSwift */; };
+		4424D48727C2E3D3009B00FC /* RealmStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D48627C2E3D3009B00FC /* RealmStorageManager.swift */; };
 		447263D127C17E2A0006663D /* SportEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D027C17E2A0006663D /* SportEventsViewModel.swift */; };
 		447263D427C180260006663D /* SportEventsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D327C180260006663D /* SportEventsProtocols.swift */; };
 		447263D627C1852F0006663D /* SportEventsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D527C1852F0006663D /* SportEventsItemViewModel.swift */; };
@@ -71,6 +74,7 @@
 		4424D47927C2AFAD009B00FC /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		4424D47B27C2B0D9009B00FC /* StorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageType.swift; sourceTree = "<group>"; };
 		4424D47E27C2E0AC009B00FC /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
+		4424D48627C2E3D3009B00FC /* RealmStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageManager.swift; sourceTree = "<group>"; };
 		447263D027C17E2A0006663D /* SportEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsViewModel.swift; sourceTree = "<group>"; };
 		447263D327C180260006663D /* SportEventsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsProtocols.swift; sourceTree = "<group>"; };
 		447263D527C1852F0006663D /* SportEventsItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsItemViewModel.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4424D48427C2E3B2009B00FC /* RealmSwift in Frameworks */,
+				4424D48227C2E3B2009B00FC /* Realm in Frameworks */,
 				44F6BA7927C16881006F2EE7 /* Swinject in Frameworks */,
 				4424D47427C2A485009B00FC /* FirebaseFirestore in Frameworks */,
 			);
@@ -139,6 +145,7 @@
 		4424D46A27C2A238009B00FC /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				4424D48527C2E3C8009B00FC /* Realm */,
 				4424D46F27C2A3BA009B00FC /* Firebase */,
 				4424D46827C2A11C009B00FC /* StorageRepository.swift */,
 				4424D46D27C2A27E009B00FC /* StorageRepositoryProtocol.swift */,
@@ -178,6 +185,14 @@
 				4424D47E27C2E0AC009B00FC /* TimeInterval+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4424D48527C2E3C8009B00FC /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				4424D48627C2E3D3009B00FC /* RealmStorageManager.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		447263D227C180100006663D /* Protocols */ = {
@@ -446,6 +461,8 @@
 			packageProductDependencies = (
 				44F6BA7827C16881006F2EE7 /* Swinject */,
 				4424D47327C2A485009B00FC /* FirebaseFirestore */,
+				4424D48127C2E3B2009B00FC /* Realm */,
+				4424D48327C2E3B2009B00FC /* RealmSwift */,
 			);
 			productName = InterviewProject;
 			productReference = 44F6BA4427C164B2006F2EE7 /* InterviewProject.app */;
@@ -522,6 +539,7 @@
 			packageReferences = (
 				44F6BA7727C16880006F2EE7 /* XCRemoteSwiftPackageReference "Swinject" */,
 				4424D46427C29F79009B00FC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				4424D48027C2E3B1009B00FC /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 44F6BA4527C164B2006F2EE7 /* Products */;
 			projectDirPath = "";
@@ -591,6 +609,7 @@
 				44F6BA4827C164B2006F2EE7 /* AppDelegate.swift in Sources */,
 				4424D47A27C2AFAD009B00FC /* Sequence+Extensions.swift in Sources */,
 				447263D127C17E2A0006663D /* SportEventsViewModel.swift in Sources */,
+				4424D48727C2E3D3009B00FC /* RealmStorageManager.swift in Sources */,
 				4424D47F27C2E0AC009B00FC /* TimeInterval+Extensions.swift in Sources */,
 				44F6BA4A27C164B2006F2EE7 /* SceneDelegate.swift in Sources */,
 			);
@@ -936,6 +955,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		4424D48027C2E3B1009B00FC /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.22.0;
+			};
+		};
 		44F6BA7727C16880006F2EE7 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -951,6 +978,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4424D46427C29F79009B00FC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		4424D48127C2E3B2009B00FC /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4424D48027C2E3B1009B00FC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		4424D48327C2E3B2009B00FC /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4424D48027C2E3B1009B00FC /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		44F6BA7827C16881006F2EE7 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;

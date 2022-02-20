@@ -10,5 +10,4 @@ import Foundation
 enum StorageType {
     case server
     case local
-    case both
 }

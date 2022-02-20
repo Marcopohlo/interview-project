@@ -11,6 +11,6 @@ protocol StorageManagerProtocol {
     var type: StorageType { get }
     
     func start()
-    func loadData() async throws -> [SportEvent]
-    func saveEvent(_ event: SportEvent)
+    func loadData() async throws -> [Storable]
+    func saveEvent(_ event: Storable)
 }

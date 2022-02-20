@@ -26,10 +26,14 @@ struct StorageContainer {
 // MARK: - Private
 private extension StorageContainer {
     func resolveManagers() -> [StorageManagerProtocol] {
-        [resolveFirebase()]
+        [resolveFirebase(), resolveRealm()]
     }
     
     func resolveFirebase() -> FirebaseStorageManager {
         FirebaseStorageManager()
+    }
+    
+    func resolveRealm() -> RealmStorageManager {
+        RealmStorageManager()
     }
 }

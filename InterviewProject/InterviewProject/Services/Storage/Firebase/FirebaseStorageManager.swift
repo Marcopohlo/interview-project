@@ -14,19 +14,20 @@ final class FirebaseStorageManager: StorageManagerProtocol {
         FirebaseApp.configure()
     }
     
-    func loadData() async throws -> [SportEvent] {
+    func loadData() async throws -> [Storable] {
         try await Firestore.firestore().collection("events").getDocuments(source: .server).documents.map { snapshot in
             let data = snapshot.data()
+            let id = data["id"] as? String ?? ""
             let name = data["name"] as? String ?? ""
             let place = data["place"] as? String ?? ""
             let duration = data["duration"] as? TimeInterval ?? 0
 
-            return SportEvent(name: name, place: place, duration: duration)
+            return SportEvent(id: id, name: name, place: place, duration: duration)
         }
     }
     
-    func saveEvent(_ event: SportEvent) {
-        let data = event.asDictionary
+    func saveEvent(_ event: Storable) {
+        let data = event.firebaseDictionary
         Firestore.firestore().collection("events").addDocument(data: data)
     }
 }
