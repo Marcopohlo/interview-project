@@ -11,6 +11,8 @@
 		447263D427C180260006663D /* SportEventsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D327C180260006663D /* SportEventsProtocols.swift */; };
 		447263D627C1852F0006663D /* SportEventsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D527C1852F0006663D /* SportEventsItemViewModel.swift */; };
 		447263D927C18D0D0006663D /* SportEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D827C18D0D0006663D /* SportEventsCell.swift */; };
+		447263DC27C199750006663D /* SportEventsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263DB27C199750006663D /* SportEventsViewState.swift */; };
+		447263E227C19B2E0006663D /* SportEventsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263E127C19B2E0006663D /* SportEventsData.swift */; };
 		44F6BA4827C164B2006F2EE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F6BA4727C164B2006F2EE7 /* AppDelegate.swift */; };
 		44F6BA4A27C164B2006F2EE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F6BA4927C164B2006F2EE7 /* SceneDelegate.swift */; };
 		44F6BA5127C164B4006F2EE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F6BA5027C164B4006F2EE7 /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		447263D327C180260006663D /* SportEventsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsProtocols.swift; sourceTree = "<group>"; };
 		447263D527C1852F0006663D /* SportEventsItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsItemViewModel.swift; sourceTree = "<group>"; };
 		447263D827C18D0D0006663D /* SportEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsCell.swift; sourceTree = "<group>"; };
+		447263DB27C199750006663D /* SportEventsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsViewState.swift; sourceTree = "<group>"; };
+		447263E127C19B2E0006663D /* SportEventsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsData.swift; sourceTree = "<group>"; };
 		44F6BA4427C164B2006F2EE7 /* InterviewProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterviewProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F6BA4727C164B2006F2EE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44F6BA4927C164B2006F2EE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +112,46 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		447263DA27C1995E0006663D /* ViewData */ = {
+			isa = PBXGroup;
+			children = (
+				447263DB27C199750006663D /* SportEventsViewState.swift */,
+			);
+			path = ViewData;
+			sourceTree = "<group>";
+		};
+		447263DD27C19AF80006663D /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				447263DE27C19AFE0006663D /* Feature */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		447263DE27C19AFE0006663D /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				447263DF27C19B0B0006663D /* SportEvents */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		447263DF27C19B0B0006663D /* SportEvents */ = {
+			isa = PBXGroup;
+			children = (
+				447263E027C19B1A0006663D /* Entity */,
+			);
+			path = SportEvents;
+			sourceTree = "<group>";
+		};
+		447263E027C19B1A0006663D /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				447263E127C19B2E0006663D /* SportEventsData.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		44F6BA3B27C164B2006F2EE7 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +175,7 @@
 		44F6BA4627C164B2006F2EE7 /* InterviewProject */ = {
 			isa = PBXGroup;
 			children = (
+				447263DD27C19AF80006663D /* Domain */,
 				44F6BA7F27C170EC006F2EE7 /* Presentation */,
 				44F6BA7A27C16E76006F2EE7 /* DI */,
 				44F6BA4727C164B2006F2EE7 /* AppDelegate.swift */,
@@ -188,6 +233,7 @@
 		44F6BA8127C170FF006F2EE7 /* SportEvents */ = {
 			isa = PBXGroup;
 			children = (
+				447263DA27C1995E0006663D /* ViewData */,
 				447263D727C18CD90006663D /* View */,
 				447263D227C180100006663D /* Protocols */,
 				44F6BA8B27C17C52006F2EE7 /* ViewModel */,
@@ -368,11 +414,13 @@
 			files = (
 				44F6BA8727C174B3006F2EE7 /* AppCoordinator.swift in Sources */,
 				447263D627C1852F0006663D /* SportEventsItemViewModel.swift in Sources */,
+				447263DC27C199750006663D /* SportEventsViewState.swift in Sources */,
 				44F6BA8A27C176FF006F2EE7 /* SportEventsCoordinator.swift in Sources */,
 				44F6BA8427C172F6006F2EE7 /* SportEventsViewController.swift in Sources */,
 				447263D927C18D0D0006663D /* SportEventsCell.swift in Sources */,
 				44F6BA7C27C16EA2006F2EE7 /* DIContainer.swift in Sources */,
 				44F6BA7E27C16F36006F2EE7 /* SportEventsContainer.swift in Sources */,
+				447263E227C19B2E0006663D /* SportEventsData.swift in Sources */,
 				447263D427C180260006663D /* SportEventsProtocols.swift in Sources */,
 				44F6BA4827C164B2006F2EE7 /* AppDelegate.swift in Sources */,
 				447263D127C17E2A0006663D /* SportEventsViewModel.swift in Sources */,
