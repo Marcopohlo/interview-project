@@ -33,14 +33,28 @@ final class SportEventsViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Sport Events"
+        setupButtons()
         bindViewModel()
     }
+}
 
+// MARK: - Layout
+private extension SportEventsViewController {
+    func setupButtons() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .compose, handler: didTapCreateSportEventButton)
+    }
 }
 
 // MARK: - Data bindings
 private extension SportEventsViewController {
     func bindViewModel() {
         viewModel.bind(to: tableView)
+    }
+}
+
+// MARK: - Actions
+private extension SportEventsViewController {
+    func didTapCreateSportEventButton() {
+        viewModel.createSportEventHandler?()
     }
 }

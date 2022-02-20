@@ -7,7 +7,9 @@
 
 import UIKit
 
-protocol SportEventsViewModelProtocol {
+protocol SportEventsViewModelProtocol: AnyObject {
+    var createSportEventHandler: (() -> Void)? { get set }
+    
     func bind(to tableView: UITableView)
 }
 

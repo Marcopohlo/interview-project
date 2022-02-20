@@ -23,5 +23,13 @@ struct SportEventsContainer {
         container.register(SportEventsViewController.self) { _, viewModel in
             SportEventsViewController(viewModel: viewModel)
         }
+        
+        container.register(CreateSportEventViewModelProtocol.self) { _ in
+            CreateSportEventViewModel()
+        }
+        
+        container.register(CreateSportEventViewController.self) { _, viewModel in
+            CreateSportEventViewController(viewModel: viewModel)
+        }
     }
 }

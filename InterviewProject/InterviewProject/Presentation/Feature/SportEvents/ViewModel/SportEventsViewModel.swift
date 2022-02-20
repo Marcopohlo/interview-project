@@ -12,6 +12,8 @@ final class SportEventsViewModel: SportEventsViewModelProtocol {
     
     private var dataSource: UITableViewDiffableDataSource<Int, SportEventsData>?
     
+    var createSportEventHandler: (() -> Void)?
+    
     // MARK: - Actions
     func bind(to tableView: UITableView) {
         dataSource = UITableViewDiffableDataSource(tableView: tableView) { tableView, indexPath, data -> UITableViewCell? in
