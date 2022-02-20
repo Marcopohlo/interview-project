@@ -18,10 +18,10 @@ struct SportEventsItemViewModel: SportEventsItemViewModelProtocol, Hashable {
     var duration: String {
         event.duration.asString(style: .positional)
     }
-    private let event: SportEventsData
+    private let event: SportEvent
     
     // MARK: - Initializers
-    init(event: SportEventsData) {
+    init(event: SportEvent) {
         self.event = event
     }
 }

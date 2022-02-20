@@ -9,6 +9,6 @@ import Foundation
 
 protocol StorageRepositoryProtocol {
     func start()
-    func loadData(from storageType: StorageType) async throws -> [SportEventsData]
-    func saveEvent(_ event: SportEventsData)
+    func loadData(from storageType: StorageType) async throws -> [SportEvent]
+    func saveEvent(_ event: SportEvent)
 }

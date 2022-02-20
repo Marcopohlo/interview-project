@@ -22,7 +22,7 @@
 		447263D627C1852F0006663D /* SportEventsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D527C1852F0006663D /* SportEventsItemViewModel.swift */; };
 		447263D927C18D0D0006663D /* SportEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D827C18D0D0006663D /* SportEventsCell.swift */; };
 		447263DC27C199750006663D /* SportEventsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263DB27C199750006663D /* SportEventsViewState.swift */; };
-		447263E227C19B2E0006663D /* SportEventsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263E127C19B2E0006663D /* SportEventsData.swift */; };
+		447263E227C19B2E0006663D /* SportEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263E127C19B2E0006663D /* SportEvent.swift */; };
 		447263E627C221610006663D /* CreateSportEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263E527C221610006663D /* CreateSportEventViewController.swift */; };
 		447263E927C2218E0006663D /* CreateSportEventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263E827C2218E0006663D /* CreateSportEventCoordinator.swift */; };
 		447263EC27C222880006663D /* CreateSportEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263EB27C222880006663D /* CreateSportEventViewModel.swift */; };
@@ -76,7 +76,7 @@
 		447263D527C1852F0006663D /* SportEventsItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsItemViewModel.swift; sourceTree = "<group>"; };
 		447263D827C18D0D0006663D /* SportEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsCell.swift; sourceTree = "<group>"; };
 		447263DB27C199750006663D /* SportEventsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsViewState.swift; sourceTree = "<group>"; };
-		447263E127C19B2E0006663D /* SportEventsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsData.swift; sourceTree = "<group>"; };
+		447263E127C19B2E0006663D /* SportEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEvent.swift; sourceTree = "<group>"; };
 		447263E527C221610006663D /* CreateSportEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSportEventViewController.swift; sourceTree = "<group>"; };
 		447263E827C2218E0006663D /* CreateSportEventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSportEventCoordinator.swift; sourceTree = "<group>"; };
 		447263EB27C222880006663D /* CreateSportEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSportEventViewModel.swift; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 		447263E027C19B1A0006663D /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				447263E127C19B2E0006663D /* SportEventsData.swift */,
+				447263E127C19B2E0006663D /* SportEvent.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -586,7 +586,7 @@
 				4424D47C27C2B0D9009B00FC /* StorageType.swift in Sources */,
 				4424D47627C2A632009B00FC /* StorageContainer.swift in Sources */,
 				44F6BA7E27C16F36006F2EE7 /* SportEventsContainer.swift in Sources */,
-				447263E227C19B2E0006663D /* SportEventsData.swift in Sources */,
+				447263E227C19B2E0006663D /* SportEvent.swift in Sources */,
 				447263D427C180260006663D /* SportEventsProtocols.swift in Sources */,
 				44F6BA4827C164B2006F2EE7 /* AppDelegate.swift in Sources */,
 				4424D47A27C2AFAD009B00FC /* Sequence+Extensions.swift in Sources */,

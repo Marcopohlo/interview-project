@@ -18,15 +18,15 @@ final class StorageRepository: StorageRepositoryProtocol {
         managers.forEach { $0.start() }
     }
     
-    func loadData(from storageType: StorageType) async throws -> [SportEventsData] {
+    func loadData(from storageType: StorageType) async throws -> [SportEvent] {
         let filteredManagers = managers.filter { $0.type == storageType }
         
-        var data: [SportEventsData] = []
+        var data: [SportEvent] = []
         try await filteredManagers.asyncForEach { data.append(contentsOf: try await $0.loadData()) }
         return data
     }
     
-    func saveEvent(_ event: SportEventsData) {
+    func saveEvent(_ event: SportEvent) {
         managers.forEach { $0.saveEvent(event) }
     }
 }

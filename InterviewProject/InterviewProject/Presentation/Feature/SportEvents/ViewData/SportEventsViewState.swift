@@ -9,7 +9,7 @@ import Foundation
 
 enum SportEventsViewState {
     case loading
-    case data([SportEventsData])
+    case data([SportEvent])
     case error(Error)
 
     // MARK: - Properties
@@ -23,7 +23,7 @@ enum SportEventsViewState {
         }
     }
     
-    var weatherData: [SportEventsData]? {
+    var weatherData: [SportEvent]? {
         switch self {
         case .data(let weatherData):
             return weatherData

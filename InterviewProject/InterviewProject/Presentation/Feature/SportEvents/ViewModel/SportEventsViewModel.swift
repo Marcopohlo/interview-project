@@ -10,10 +10,10 @@ import UIKit
 final class SportEventsViewModel: SportEventsViewModelProtocol {
     // MARK: - Properties
     private let storageRepository: StorageRepositoryProtocol
-    private var dataSource: UITableViewDiffableDataSource<Int, SportEventsData>?
+    private var dataSource: UITableViewDiffableDataSource<Int, SportEvent>?
     
     var createSportEventHandler: (() -> Void)?
-    var data: [SportEventsData] = []
+    var data: [SportEvent] = []
     
     // MARK: - Initializers
     init(storageRepository: StorageRepositoryProtocol) {
@@ -42,7 +42,7 @@ final class SportEventsViewModel: SportEventsViewModelProtocol {
         Task {
             do {
                 let data = try await storageRepository.loadData(from: .server)
-                var snapshot = NSDiffableDataSourceSnapshot<Int, SportEventsData>()
+                var snapshot = NSDiffableDataSourceSnapshot<Int, SportEvent>()
                 snapshot.appendSections([0])
                 snapshot.appendItems(data)
                 

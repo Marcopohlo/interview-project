@@ -11,7 +11,7 @@ final class CreateSportEventViewModel: CreateSportEventViewModelProtocol {
     
     func save() {
         let storage = DIContainer.container.resolve(StorageRepositoryProtocol.self)
-        let event = SportEventsData(name: "Skok do dálky", place: "Praha", duration: 10)
+        let event = SportEvent(name: "Skok do dálky", place: "Praha", duration: 10)
         storage?.saveEvent(event)
     }
 }
