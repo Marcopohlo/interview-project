@@ -37,10 +37,22 @@ final class CreateSportEventCoordinator: Coordinator {
             self.navigationController.dismiss(animated: true)
             self.didFinish?(self)
         }
+        createSportEventViewModel.showAlert = { [weak self] in
+            self?.showAlert()
+        }
         
         let createSportEventViewController = DIContainer.container.resolve(CreateSportEventViewController.self, argument: createSportEventViewModel)!
         let createSportEventNavigationController = UINavigationController(rootViewController: createSportEventViewController)
         createSportEventNavigationController.presentationController?.delegate = self
         navigationController.present(createSportEventNavigationController, animated: true)
+    }
+}
+
+// MARK: - Alert
+private extension CreateSportEventCoordinator {
+    func showAlert() {
+        let alertController = UIAlertController(title: "Missing items", message: "Please fill all items", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+        navigationController.presentedViewController?.present(alertController, animated: true)
     }
 }

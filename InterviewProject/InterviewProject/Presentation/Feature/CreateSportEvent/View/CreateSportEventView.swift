@@ -31,7 +31,7 @@ final class CreateSportEventView: UIView {
         return view
     }()
     
-    private lazy var nameTextField: UITextField = {
+    lazy var nameTextField: UITextField = {
         let nameTextField = UITextField()
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         nameTextField.placeholder = "Name"
@@ -39,7 +39,7 @@ final class CreateSportEventView: UIView {
         return nameTextField
     }()
     
-    private lazy var placeTextField: UITextField = {
+    lazy var placeTextField: UITextField = {
         let placeTextField = UITextField()
         placeTextField.translatesAutoresizingMaskIntoConstraints = false
         placeTextField.placeholder = "Place"

@@ -42,16 +42,32 @@ private extension CreateSportEventViewController {
         self.title = "Create Sport Event"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapSaveButton))
+        createSportEventView.nameTextField.addTarget(self, action: #selector(nameTextFieldEditingChanged(_:)), for: .editingChanged)
+        createSportEventView.placeTextField.addTarget(self, action: #selector(placeTextFieldEditingChanged(_:)), for: .editingChanged)
     }
 }
 
 // MARK: - Actions
 private extension CreateSportEventViewController {
     @objc func didTapCancelButton() {
-        viewModel.cancel()
+        viewModel.didTapCancelButton()
     }
     
     @objc func didTapSaveButton() {
-        viewModel.save()
+        viewModel.didTapSaveButton()
+    }
+    
+    @objc func nameTextFieldEditingChanged(_ textField: UITextField) {
+        guard let name = textField.text else {
+            return
+        }
+        viewModel.nameTextFieldEditingChanged(name)
+    }
+    
+    @objc func placeTextFieldEditingChanged(_ textField: UITextField) {
+        guard let place = textField.text else {
+            return
+        }
+        viewModel.placeTextFieldEditingChanged(place)
     }
 }
