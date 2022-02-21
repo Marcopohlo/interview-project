@@ -16,6 +16,7 @@ final class SportEventsViewModel: SportEventsViewModelProtocol {
             stateDidChange?(state)
         }
     }
+    private var storageTypes: [StorageType] = [.local, .server]
     
     var createSportEventHandler: (() -> Void)?
     var showAlert: (() -> Void)?
@@ -56,6 +57,11 @@ final class SportEventsViewModel: SportEventsViewModelProtocol {
     func handleErrorState() {
         showAlert?()
     }
+    
+    func didSelectSegment(storageTypes: [StorageType]) {
+        self.storageTypes = storageTypes
+        loadData()
+    }
 }
 
 // MARK: - Private
@@ -63,13 +69,13 @@ private extension SportEventsViewModel {
     func fetchData() {
         Task {
             do {
-                let data = try await storageRepository.loadData(from: .server, .local)
-                var snapshot = NSDiffableDataSourceSnapshot<Int, SportEvent>()
-                snapshot.appendSections([0])
-                snapshot.appendItems(data.compactMap { $0 as? SportEvent })
-                
-                await dataSource?.apply(snapshot, animatingDifferences: false)
+                let data = try await storageRepository.loadData(from: storageTypes)
                 DispatchQueue.main.async {
+                    var snapshot = NSDiffableDataSourceSnapshot<Int, SportEvent>()
+                    snapshot.appendSections([0])
+                    snapshot.appendItems(data.compactMap { $0 as? SportEvent })
+                    
+                    self.dataSource?.apply(snapshot, animatingDifferences: false)
                     self.state = .data(data.isEmpty)
                 }
             } catch {

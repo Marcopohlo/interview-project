@@ -17,6 +17,7 @@ protocol SportEventsViewModelProtocol: AnyObject {
     func refresh()
     func didTapCreateSportEventButton()
     func handleErrorState()
+    func didSelectSegment(storageTypes: [StorageType])
 }
 
 protocol SportEventsItemViewModelProtocol {

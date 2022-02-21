@@ -30,6 +30,15 @@ final class SportEventsViewController: UIViewController {
         return label
     }()
     
+    private lazy var segmentedView: UIView = {
+        let view = UIView()
+        let segmentedControl = UISegmentedControl(items: ["All", "Local", "Remote"])
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(segmentedControl)
+        segmentedControl.pinToEdges(of: view)
+        return view
+    }()
+    
     // MARK: - Initializers
     init(viewModel: SportEventsViewModelProtocol) {
         self.viewModel = viewModel
@@ -64,6 +73,7 @@ private extension SportEventsViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(didTapCreateSportEventButton))
         self.extendedLayoutIncludesOpaqueBars = true
         setupTableView()
+        setupSegmentControl()
     }
     
     func setupTableView() {
@@ -74,6 +84,41 @@ private extension SportEventsViewController {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.pinToEdges(of: view)
+        tableView.tableHeaderView = segmentedView
+        recalculateHeaderViewFrame()
+    }
+    
+    func setupSegmentControl() {
+        let segmentControl = segmentedView.subviews.first as? UISegmentedControl
+        segmentControl?.selectedSegmentIndex = 0
+        let allAction = UIAction(title: "All") { [weak self] action in
+            self?.viewModel.didSelectSegment(storageTypes: [.local, .server])
+        }
+        let localAction = UIAction(title: "Local") { [weak self] action in
+            self?.viewModel.didSelectSegment(storageTypes: [.local])
+        }
+        let remoteAction = UIAction(title: "Remote") { [weak self] action in
+            self?.viewModel.didSelectSegment(storageTypes: [.server])
+        }
+        segmentControl?.setAction(allAction, forSegmentAt: 0)
+        segmentControl?.setAction(localAction, forSegmentAt: 1)
+        segmentControl?.setAction(remoteAction, forSegmentAt: 2)
+    }
+}
+
+// MARK: - Layout
+private extension SportEventsViewController {
+    private func recalculateHeaderViewFrame() {
+        if let headerView = tableView.tableHeaderView {
+            headerView.layoutIfNeeded()
+            
+            let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+            var frame = headerView.frame
+            frame.size.height = height
+            headerView.frame = frame
+            
+            tableView.tableHeaderView = headerView
+        }
     }
 }
 

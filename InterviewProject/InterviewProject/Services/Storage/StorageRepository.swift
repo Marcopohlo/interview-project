@@ -18,8 +18,8 @@ final class StorageRepository: StorageRepositoryProtocol {
         managers.forEach { $0.start() }
     }
     
-    func loadData(from storageType: StorageType...) async throws -> [Storable] {
-        let filteredManagers = managers.filter { storageType.contains($0.type) }
+    func loadData(from storageTypes: [StorageType]) async throws -> [Storable] {
+        let filteredManagers = managers.filter { storageTypes.contains($0.type) }
         
         var data: [Storable] = []
         try await filteredManagers.asyncForEach { data.append(contentsOf: try await $0.loadData()) }
