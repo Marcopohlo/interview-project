@@ -11,6 +11,7 @@ final class CreateSportEventCoordinator: Coordinator {
     // MARK: - Properties
     private let navigationController: UINavigationController
     private var viewModel: CreateSportEventViewModelProtocol?
+    var didSaveSuccessfully: (() -> Void)?
     
     // MARK: - Initializers
     init(navigationController: UINavigationController) {
@@ -37,6 +38,7 @@ final class CreateSportEventCoordinator: Coordinator {
             }
             self.navigationController.dismiss(animated: true)
             self.didFinish?(self)
+            self.didSaveSuccessfully?()
         }
         createSportEventViewModel.showAlert = { [weak self] in
             self?.showAlert()

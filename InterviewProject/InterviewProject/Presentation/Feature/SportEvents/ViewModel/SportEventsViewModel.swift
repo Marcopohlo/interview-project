@@ -13,7 +13,6 @@ final class SportEventsViewModel: SportEventsViewModelProtocol {
     private var dataSource: UITableViewDiffableDataSource<Int, SportEvent>?
     
     var createSportEventHandler: (() -> Void)?
-    var data: [SportEvent] = []
     
     // MARK: - Initializers
     init(storageRepository: StorageRepositoryProtocol) {
@@ -38,6 +37,13 @@ final class SportEventsViewModel: SportEventsViewModelProtocol {
         fetchData()
     }
     
+    func refresh() {
+        fetchData()
+    }
+}
+
+// MARK: - Private
+private extension SportEventsViewModel {
     func fetchData() {
         Task {
             do {

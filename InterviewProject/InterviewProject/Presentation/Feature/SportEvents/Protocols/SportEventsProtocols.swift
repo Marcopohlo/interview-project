@@ -12,6 +12,7 @@ protocol SportEventsViewModelProtocol: AnyObject {
     
     func bind(to tableView: UITableView)
     func start()
+    func refresh()
 }
 
 protocol SportEventsItemViewModelProtocol {

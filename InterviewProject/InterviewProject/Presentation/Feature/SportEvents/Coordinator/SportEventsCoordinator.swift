@@ -34,6 +34,9 @@ final class SportEventsCoordinator: Coordinator {
 private extension SportEventsCoordinator {
     func showCreateSportEventScreen() {
         let createSportEventCoordinator = CreateSportEventCoordinator(navigationController: navigationController)
+        createSportEventCoordinator.didSaveSuccessfully = { [weak self] in
+            self?.viewModel?.refresh()
+        }
         pushCoordinator(createSportEventCoordinator)
     }
 }
