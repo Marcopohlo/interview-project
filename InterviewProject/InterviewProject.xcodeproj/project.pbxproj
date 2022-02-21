@@ -30,7 +30,6 @@
 		447263E927C2218E0006663D /* CreateSportEventCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263E827C2218E0006663D /* CreateSportEventCoordinator.swift */; };
 		447263EC27C222880006663D /* CreateSportEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263EB27C222880006663D /* CreateSportEventViewModel.swift */; };
 		447263EF27C222C40006663D /* CreateSportEventProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263EE27C222C40006663D /* CreateSportEventProtocols.swift */; };
-		447263F227C22C410006663D /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263F127C22C400006663D /* UIBarButtonItem+Extensions.swift */; };
 		447263F527C230DD0006663D /* CreateSportEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263F427C230DD0006663D /* CreateSportEventView.swift */; };
 		44F6BA4827C164B2006F2EE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F6BA4727C164B2006F2EE7 /* AppDelegate.swift */; };
 		44F6BA4A27C164B2006F2EE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F6BA4927C164B2006F2EE7 /* SceneDelegate.swift */; };
@@ -85,7 +84,6 @@
 		447263E827C2218E0006663D /* CreateSportEventCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSportEventCoordinator.swift; sourceTree = "<group>"; };
 		447263EB27C222880006663D /* CreateSportEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSportEventViewModel.swift; sourceTree = "<group>"; };
 		447263EE27C222C40006663D /* CreateSportEventProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSportEventProtocols.swift; sourceTree = "<group>"; };
-		447263F127C22C400006663D /* UIBarButtonItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extensions.swift"; sourceTree = "<group>"; };
 		447263F427C230DD0006663D /* CreateSportEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSportEventView.swift; sourceTree = "<group>"; };
 		44F6BA4427C164B2006F2EE7 /* InterviewProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterviewProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F6BA4727C164B2006F2EE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -295,14 +293,6 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		447263F027C22C260006663D /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				447263F127C22C400006663D /* UIBarButtonItem+Extensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		447263F327C230C70006663D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,7 +370,6 @@
 		44F6BA7F27C170EC006F2EE7 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				447263F027C22C260006663D /* Extensions */,
 				44F6BA8527C174A1006F2EE7 /* Common */,
 				44F6BA8027C170F0006F2EE7 /* Feature */,
 			);
@@ -584,7 +573,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				447263F227C22C410006663D /* UIBarButtonItem+Extensions.swift in Sources */,
 				44F6BA8727C174B3006F2EE7 /* AppCoordinator.swift in Sources */,
 				4424D46C27C2A265009B00FC /* StorageManagerProtocol.swift in Sources */,
 				447263F527C230DD0006663D /* CreateSportEventView.swift in Sources */,

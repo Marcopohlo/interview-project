@@ -42,7 +42,7 @@ final class SportEventsViewController: UIViewController {
 private extension SportEventsViewController {
     func setupViews() {
         self.title = "Sport Events"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .compose, handler: didTapCreateSportEventButton)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(didTapCreateSportEventButton))
         tableView.register(SportEventsCell.self, forCellReuseIdentifier: SportEventsCell.reuseIdentifier)
     }
 }
@@ -56,7 +56,7 @@ private extension SportEventsViewController {
 
 // MARK: - Actions
 private extension SportEventsViewController {
-    func didTapCreateSportEventButton() {
+    @objc func didTapCreateSportEventButton() {
         viewModel.createSportEventHandler?()
     }
 }

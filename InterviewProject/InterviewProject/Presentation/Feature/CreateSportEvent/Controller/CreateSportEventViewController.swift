@@ -32,43 +32,26 @@ final class CreateSportEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Create Sport Event"
-//        setUpNavigationBarAppearance()
-        setUpBarButtonItems()
-    }
-    
-    deinit {
-        print("create deinitialized")
+        setupViews()
     }
 }
 
 // MARK: - Setup
 private extension CreateSportEventViewController {
-//    func setUpNavigationBarAppearance() {
-//        let appearance = UINavigationBarAppearance()
-//        appearance.configureWithDefaultBackground()
-//        appearance.backgroundColor = .blue
-//        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-//        navigationController?.navigationBar.barTintColor = .blue
-//        navigationController?.navigationBar.standardAppearance = appearance
-//        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-//        navigationController?.navigationBar.compactAppearance = appearance
-//        navigationController?.navigationBar.compactScrollEdgeAppearance = appearance
-//    }
-    
-    func setUpBarButtonItems() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .cancel, handler: didTapCancelButton)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .done, handler: didTapSaveButton)
+    func setupViews() {
+        self.title = "Create Sport Event"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancelButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapSaveButton))
     }
 }
 
 // MARK: - Actions
 private extension CreateSportEventViewController {
-    func didTapCancelButton() {
+    @objc func didTapCancelButton() {
         viewModel.cancel()
     }
     
-    func didTapSaveButton() {
+    @objc func didTapSaveButton() {
         viewModel.save()
     }
 }
