@@ -18,11 +18,12 @@ final class FirebaseStorageManager: StorageManagerProtocol {
         try await Firestore.firestore().collection("events").getDocuments(source: .server).documents.map { snapshot in
             let data = snapshot.data()
             let id = data["id"] as? String ?? ""
+            let timestamp = data["timestamp"] as? TimeInterval ?? 0
             let name = data["name"] as? String ?? ""
             let place = data["place"] as? String ?? ""
             let duration = data["duration"] as? TimeInterval ?? 0
 
-            return SportEvent(id: id, name: name, place: place, duration: duration)
+            return SportEvent(id: id, timestamp: timestamp, name: name, place: place, duration: duration)
         }
     }
     

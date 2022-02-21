@@ -23,7 +23,7 @@ final class StorageRepository: StorageRepositoryProtocol {
         
         var data: [Storable] = []
         try await filteredManagers.asyncForEach { data.append(contentsOf: try await $0.loadData()) }
-        return data
+        return data.sorted { $0.timestamp > $1.timestamp }
     }
     
     func saveEvent(in storageType: StorageType, _ event: Storable) {

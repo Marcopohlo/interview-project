@@ -10,6 +10,7 @@ import RealmSwift
 
 protocol Storable {
     var id: String { get }
+    var timestamp: TimeInterval { get }
     var name: String { get }
     var place: String { get }
     var duration: TimeInterval { get }
@@ -19,6 +20,7 @@ protocol Storable {
 
 struct SportEvent: Hashable, Storable {
     var id: String
+    var timestamp: TimeInterval
     var name: String
     var place: String
     var duration: TimeInterval
@@ -36,6 +38,7 @@ struct SportEvent: Hashable, Storable {
     var realmObject: Object {
         let object = SportEventObject()
         object.id = id
+        object.timestamp = timestamp
         object.name = name
         object.place = place
         object.duration = duration
@@ -45,11 +48,12 @@ struct SportEvent: Hashable, Storable {
 
 final class SportEventObject: Object {
     @Persisted(primaryKey: true) var id: String
+    @Persisted var timestamp: TimeInterval
     @Persisted var name: String
     @Persisted var place: String
     @Persisted var duration: TimeInterval
     
     var structure: SportEvent {
-        SportEvent(id: id, name: name, place: place, duration: duration)
+        SportEvent(id: id, timestamp: timestamp, name: name, place: place, duration: duration)
     }
 }

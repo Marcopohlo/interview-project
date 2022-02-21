@@ -55,7 +55,13 @@ final class CreateSportEventViewModel: CreateSportEventViewModelProtocol {
         guard let name = name, let place = place else {
             return
         }
-        let event = SportEvent(id: UUID().uuidString, name: name, place: place, duration: duration)
+        let event = SportEvent(
+            id: UUID().uuidString,
+            timestamp: Date.now.timeIntervalSince1970,
+            name: name,
+            place: place,
+            duration: duration
+        )
         storageRepository.saveEvent(in: storageType, event)
         didSaveEvent?()
     }
