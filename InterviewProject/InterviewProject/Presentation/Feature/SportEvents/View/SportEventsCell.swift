@@ -67,7 +67,7 @@ private extension SportEventsCell {
         nameLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 2).isActive = true
         contentView.trailingAnchor.constraint(equalToSystemSpacingAfter: nameLabel.trailingAnchor, multiplier: 2).isActive = true
         
-        placeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4).isActive = true
+        placeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 2).isActive = true
         placeLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         placeLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
         

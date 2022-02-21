@@ -12,6 +12,12 @@ final class SportEventsViewController: UIViewController {
     private let tableView = UITableView()
     private let viewModel: SportEventsViewModelProtocol
     
+    private lazy var activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.startAnimating()
+        return activityIndicatorView
+    }()
+    
     // MARK: - Initializers
     init(viewModel: SportEventsViewModelProtocol) {
         self.viewModel = viewModel
@@ -51,6 +57,9 @@ private extension SportEventsViewController {
 private extension SportEventsViewController {
     func bindViewModel() {
         viewModel.bind(to: tableView)
+        viewModel.toggleLoader = { [weak self] toggle in
+            self?.tableView.backgroundView = toggle ? self?.activityIndicatorView : nil
+        }
     }
 }
 

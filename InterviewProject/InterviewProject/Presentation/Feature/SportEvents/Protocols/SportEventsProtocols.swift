@@ -9,6 +9,7 @@ import UIKit
 
 protocol SportEventsViewModelProtocol: AnyObject {
     var createSportEventHandler: (() -> Void)? { get set }
+    var toggleLoader: ((Bool) -> Void)? { get set }
     
     func bind(to tableView: UITableView)
     func start()

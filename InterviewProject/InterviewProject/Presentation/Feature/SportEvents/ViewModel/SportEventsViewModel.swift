@@ -13,6 +13,7 @@ final class SportEventsViewModel: SportEventsViewModelProtocol {
     private var dataSource: UITableViewDiffableDataSource<Int, SportEvent>?
     
     var createSportEventHandler: (() -> Void)?
+    var toggleLoader: ((Bool) -> Void)?
     
     // MARK: - Initializers
     init(storageRepository: StorageRepositoryProtocol) {
@@ -45,9 +46,12 @@ final class SportEventsViewModel: SportEventsViewModelProtocol {
 // MARK: - Private
 private extension SportEventsViewModel {
     func fetchData() {
+        toggleLoader?(true)
+        
         Task {
             do {
                 let data = try await storageRepository.loadData(from: .server, .local)
+                toggleLoader?(false)
                 var snapshot = NSDiffableDataSourceSnapshot<Int, SportEvent>()
                 snapshot.appendSections([0])
                 snapshot.appendItems(data.compactMap { $0 as? SportEvent })
