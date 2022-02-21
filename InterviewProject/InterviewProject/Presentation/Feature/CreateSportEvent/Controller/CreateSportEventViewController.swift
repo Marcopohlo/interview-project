@@ -34,6 +34,10 @@ final class CreateSportEventViewController: UIViewController {
         
         setupViews()
     }
+    
+    deinit {
+        print("View Controller deinitialized")
+    }
 }
 
 // MARK: - Setup
@@ -44,6 +48,9 @@ private extension CreateSportEventViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapSaveButton))
         createSportEventView.nameTextField.addTarget(self, action: #selector(nameTextFieldEditingChanged(_:)), for: .editingChanged)
         createSportEventView.placeTextField.addTarget(self, action: #selector(placeTextFieldEditingChanged(_:)), for: .editingChanged)
+        createSportEventView.textFieldDelegate = self
+        createSportEventView.pickerDelegate = self
+        createSportEventView.pickerDataSource = self
     }
 }
 
@@ -69,5 +76,35 @@ private extension CreateSportEventViewController {
             return
         }
         viewModel.placeTextFieldEditingChanged(place)
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension CreateSportEventViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+// MARK: - UIPickerViewDelegate
+extension CreateSportEventViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        viewModel.titleForRow(row, forComponent: component)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        viewModel.didSelectPickerRow(row, inComponent: component)
+    }
+}
+
+// MARK: - UIPickerViewDataSource
+extension CreateSportEventViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        viewModel.numberOfPickerComponents()
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        viewModel.numberOfPickerRowsInComponent(component)
     }
 }

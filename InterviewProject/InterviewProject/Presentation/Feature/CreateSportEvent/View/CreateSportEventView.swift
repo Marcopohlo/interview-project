@@ -22,6 +22,9 @@ final class CreateSportEventView: UIView {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = 4
+        stackView.backgroundColor = .secondarySystemGroupedBackground
+        stackView.layer.cornerCurve = .continuous
+        stackView.layer.cornerRadius = 10
         return stackView
     }()
     
@@ -47,34 +50,24 @@ final class CreateSportEventView: UIView {
         return placeTextField
     }()
     
-    private lazy var minutesView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .green
-        let label = UILabel()
-        label.backgroundColor = .blue
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "minutes"
-        view.addSubview(label)
-        view.trailingAnchor.constraint(equalToSystemSpacingAfter: label.trailingAnchor, multiplier: 1).isActive = true
-        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        view.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        return view
-    }()
+    private lazy var pickerView = UIPickerView()
     
-    private lazy var durationTextField: UITextField = {
-        let durationTextField = UITextField()
-        durationTextField.translatesAutoresizingMaskIntoConstraints = false
-        durationTextField.placeholder = "Duration"
-        durationTextField.borderStyle = .roundedRect
-        durationTextField.keyboardType = .numberPad
-        let label = UILabel()
-        label.backgroundColor = .green
-        label.text = "minutes"
-        durationTextField.rightView = label
-        durationTextField.rightViewMode = .always
-        return durationTextField
-    }()
+    weak var textFieldDelegate: UITextFieldDelegate? {
+        didSet {
+            nameTextField.delegate = textFieldDelegate
+            placeTextField.delegate = textFieldDelegate
+        }
+    }
+    weak var pickerDelegate: UIPickerViewDelegate? {
+        didSet {
+            pickerView.delegate = pickerDelegate
+        }
+    }
+    weak var pickerDataSource: UIPickerViewDataSource? {
+        didSet {
+            pickerView.dataSource = pickerDataSource
+        }
+    }
     
     // MARK: - Initializers
     override init(frame: CGRect) {
@@ -101,7 +94,7 @@ private extension CreateSportEventView {
         contentView.addSubview(stackView)
         stackView.addArrangedSubview(nameTextField)
         stackView.addArrangedSubview(placeTextField)
-        stackView.addArrangedSubview(durationTextField)
+        stackView.addArrangedSubview(pickerView)
     }
     
     func setupLayout() {

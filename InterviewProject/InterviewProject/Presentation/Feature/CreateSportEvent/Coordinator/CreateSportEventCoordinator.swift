@@ -9,7 +9,8 @@ import UIKit
 
 final class CreateSportEventCoordinator: Coordinator {
     // MARK: - Properties
-    let navigationController: UINavigationController
+    private let navigationController: UINavigationController
+    private var viewModel: CreateSportEventViewModelProtocol?
     
     // MARK: - Initializers
     init(navigationController: UINavigationController) {
@@ -40,6 +41,10 @@ final class CreateSportEventCoordinator: Coordinator {
         createSportEventViewModel.showAlert = { [weak self] in
             self?.showAlert()
         }
+        createSportEventViewModel.showActionSheet = { [weak self] in
+            self?.showActionSheet()
+        }
+        viewModel = createSportEventViewModel
         
         let createSportEventViewController = DIContainer.container.resolve(CreateSportEventViewController.self, argument: createSportEventViewModel)!
         let createSportEventNavigationController = UINavigationController(rootViewController: createSportEventViewController)
@@ -48,11 +53,26 @@ final class CreateSportEventCoordinator: Coordinator {
     }
 }
 
-// MARK: - Alert
+// MARK: - UIAlertController
 private extension CreateSportEventCoordinator {
     func showAlert() {
         let alertController = UIAlertController(title: "Missing items", message: "Please fill all items", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+        navigationController.presentedViewController?.present(alertController, animated: true)
+    }
+    
+    func showActionSheet() {
+        let alertController = UIAlertController(title: "Which storage?", message: nil, preferredStyle: .actionSheet)
+        let remoteAction = UIAlertAction(title: "Remote", style: .default) { [weak self] action in
+            self?.viewModel?.saveEvent(storageType: .server)
+        }
+        let localAction = UIAlertAction(title: "Local", style: .default) { [weak self] action in
+            self?.viewModel?.saveEvent(storageType: .local)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(remoteAction)
+        alertController.addAction(localAction)
+        alertController.addAction(cancelAction)
         navigationController.presentedViewController?.present(alertController, animated: true)
     }
 }
