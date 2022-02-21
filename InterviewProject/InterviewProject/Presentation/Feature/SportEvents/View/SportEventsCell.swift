@@ -65,7 +65,7 @@ private extension SportEventsCell {
     func setupLayout() {
         nameLabel.topAnchor.constraint(equalToSystemSpacingBelow: contentView.topAnchor, multiplier: 1).isActive = true
         nameLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 2).isActive = true
-        contentView.trailingAnchor.constraint(equalToSystemSpacingAfter: nameLabel.trailingAnchor, multiplier: 2).isActive = true
+        nameLabel.setContentHuggingPriority(.defaultLow + 1, for: .vertical)
         
         placeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 2).isActive = true
         placeLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
@@ -73,6 +73,8 @@ private extension SportEventsCell {
         
         contentView.trailingAnchor.constraint(equalToSystemSpacingAfter: durationLabel.trailingAnchor, multiplier: 2).isActive = true
         durationLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        durationLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: nameLabel.trailingAnchor, multiplier: 1).isActive = true
+        durationLabel.setContentHuggingPriority(.required, for: .horizontal)
         
         contentView.bottomAnchor.constraint(equalToSystemSpacingBelow: placeLabel.bottomAnchor, multiplier: 1).isActive = true
     }
