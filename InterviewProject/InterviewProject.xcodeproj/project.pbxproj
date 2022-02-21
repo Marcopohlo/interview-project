@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4419866027C40DAE004DEE6E /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419865F27C40DAE004DEE6E /* UIView+Extensions.swift */; };
 		4424D46327C29EA5009B00FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4424D46227C29EA5009B00FC /* GoogleService-Info.plist */; };
 		4424D46927C2A11C009B00FC /* StorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D46827C2A11C009B00FC /* StorageRepository.swift */; };
 		4424D46C27C2A265009B00FC /* StorageManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D46B27C2A265009B00FC /* StorageManagerProtocol.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4419865F27C40DAE004DEE6E /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		4424D46227C29EA5009B00FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4424D46827C2A11C009B00FC /* StorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRepository.swift; sourceTree = "<group>"; };
 		4424D46B27C2A265009B00FC /* StorageManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerProtocol.swift; sourceTree = "<group>"; };
@@ -132,6 +134,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4419865E27C40D9B004DEE6E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4419865F27C40DAE004DEE6E /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4424D46727C2A106009B00FC /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -370,6 +380,7 @@
 		44F6BA7F27C170EC006F2EE7 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4419865E27C40D9B004DEE6E /* Extensions */,
 				44F6BA8527C174A1006F2EE7 /* Common */,
 				44F6BA8027C170F0006F2EE7 /* Feature */,
 			);
@@ -587,6 +598,7 @@
 				44F6BA8427C172F6006F2EE7 /* SportEventsViewController.swift in Sources */,
 				447263D927C18D0D0006663D /* SportEventsCell.swift in Sources */,
 				4424D46E27C2A27E009B00FC /* StorageRepositoryProtocol.swift in Sources */,
+				4419866027C40DAE004DEE6E /* UIView+Extensions.swift in Sources */,
 				44F6BA7C27C16EA2006F2EE7 /* DIContainer.swift in Sources */,
 				447263EF27C222C40006663D /* CreateSportEventProtocols.swift in Sources */,
 				4424D47C27C2B0D9009B00FC /* StorageType.swift in Sources */,

@@ -14,8 +14,20 @@ final class SportEventsViewController: UIViewController {
     
     private lazy var activityIndicatorView: UIActivityIndicatorView = {
         let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicatorView.backgroundColor = .systemBackground
         activityIndicatorView.startAnimating()
         return activityIndicatorView
+    }()
+    
+    private lazy var noDataLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 24, weight: .medium)
+        label.textColor = .systemGray
+        label.text = "No data"
+        label.textAlignment = .center
+        return label
     }()
     
     // MARK: - Initializers
@@ -32,7 +44,7 @@ final class SportEventsViewController: UIViewController {
     
     // MARK: - Life cycle
     override func loadView() {
-        view = tableView
+        view = UIView()
     }
 
     override func viewDidLoad() {
@@ -40,7 +52,7 @@ final class SportEventsViewController: UIViewController {
         
         setupViews()
         bindViewModel()
-        viewModel.start()
+        viewModel.loadData()
     }
 }
 
@@ -48,8 +60,20 @@ final class SportEventsViewController: UIViewController {
 private extension SportEventsViewController {
     func setupViews() {
         self.title = "Sport Events"
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(didTapCreateSportEventButton))
+        self.extendedLayoutIncludesOpaqueBars = true
+        setupTableView()
+    }
+    
+    func setupTableView() {
         tableView.register(SportEventsCell.self, forCellReuseIdentifier: SportEventsCell.reuseIdentifier)
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.pinToEdges(of: view)
     }
 }
 
@@ -57,8 +81,8 @@ private extension SportEventsViewController {
 private extension SportEventsViewController {
     func bindViewModel() {
         viewModel.bind(to: tableView)
-        viewModel.toggleLoader = { [weak self] toggle in
-            self?.tableView.backgroundView = toggle ? self?.activityIndicatorView : nil
+        viewModel.stateDidChange = { [weak self] state in
+            self?.handleStateChange(state: state)
         }
     }
 }
@@ -66,6 +90,46 @@ private extension SportEventsViewController {
 // MARK: - Actions
 private extension SportEventsViewController {
     @objc func didTapCreateSportEventButton() {
-        viewModel.createSportEventHandler?()
+        viewModel.didTapCreateSportEventButton()
+    }
+    
+    @objc func handleRefresh() {
+        viewModel.refresh()
+    }
+}
+
+// MARK: - State
+private extension SportEventsViewController {
+    func handleStateChange(state: SportEventsViewState) {
+        switch state {
+        case .loading:
+            handleLoadingState()
+        case .data(let isEmpty):
+            handleDataState(isEmpty: isEmpty)
+        case .error:
+            handleErrorState()
+        }
+    }
+    
+    func handleLoadingState() {
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.pinToEdges(of: view)
+    }
+    
+    func handleDataState(isEmpty: Bool) {
+        tableView.refreshControl?.endRefreshing()
+        activityIndicatorView.removeFromSuperview()
+        if isEmpty {
+            view.addSubview(noDataLabel)
+            noDataLabel.pinToEdges(of: view)
+        } else {
+            noDataLabel.removeFromSuperview()
+        }
+    }
+    
+    func handleErrorState() {
+        tableView.refreshControl?.endRefreshing()
+        activityIndicatorView.removeFromSuperview()
+        viewModel.handleErrorState()
     }
 }

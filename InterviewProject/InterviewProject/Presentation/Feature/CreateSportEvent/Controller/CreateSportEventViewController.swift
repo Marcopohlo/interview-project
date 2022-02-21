@@ -34,10 +34,6 @@ final class CreateSportEventViewController: UIViewController {
         
         setupViews()
     }
-    
-    deinit {
-        print("View Controller deinitialized")
-    }
 }
 
 // MARK: - Setup

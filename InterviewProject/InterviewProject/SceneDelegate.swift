@@ -11,6 +11,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    private let appCoordinator = AppCoordinator()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -24,12 +25,10 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storageRepository = DIContainer.container.resolve(StorageRepositoryProtocol.self)!
         storageRepository.start()
         
-        let navigationController = UINavigationController()
-        let appCoordinator = AppCoordinator(navigationController: navigationController)
         appCoordinator.start()
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = navigationController
+        window.rootViewController = appCoordinator.rootViewController
         self.window = window
         window.makeKeyAndVisible()
     }

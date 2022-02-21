@@ -9,37 +9,6 @@ import Foundation
 
 enum SportEventsViewState {
     case loading
-    case data([SportEvent])
-    case error(Error)
-
-    // MARK: - Properties
-    
-    var isLoading: Bool {
-        switch self {
-        case .loading:
-            return true
-        case .data, .error:
-            return false
-        }
-    }
-    
-    var weatherData: [SportEvent]? {
-        switch self {
-        case .data(let weatherData):
-            return weatherData
-        case .error, .loading:
-            return nil
-        }
-    }
-    
-    var weatherDataError: Error? {
-        switch self {
-        case .error(let weatherDataError):
-            return weatherDataError
-        case .data,
-             .loading:
-            return nil
-        }
-    }
-
+    case data(Bool)
+    case error
 }

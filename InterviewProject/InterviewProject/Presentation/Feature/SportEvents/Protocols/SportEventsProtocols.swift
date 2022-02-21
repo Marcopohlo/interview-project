@@ -9,11 +9,14 @@ import UIKit
 
 protocol SportEventsViewModelProtocol: AnyObject {
     var createSportEventHandler: (() -> Void)? { get set }
-    var toggleLoader: ((Bool) -> Void)? { get set }
+    var showAlert: (() -> Void)? { get set }
+    var stateDidChange: ((SportEventsViewState) -> Void)? { get set }
     
     func bind(to tableView: UITableView)
-    func start()
+    func loadData()
     func refresh()
+    func didTapCreateSportEventButton()
+    func handleErrorState()
 }
 
 protocol SportEventsItemViewModelProtocol {

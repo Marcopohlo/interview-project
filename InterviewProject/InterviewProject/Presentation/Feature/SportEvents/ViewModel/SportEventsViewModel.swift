@@ -11,9 +11,15 @@ final class SportEventsViewModel: SportEventsViewModelProtocol {
     // MARK: - Properties
     private let storageRepository: StorageRepositoryProtocol
     private var dataSource: UITableViewDiffableDataSource<Int, SportEvent>?
+    private var state: SportEventsViewState = .loading {
+        didSet {
+            stateDidChange?(state)
+        }
+    }
     
     var createSportEventHandler: (() -> Void)?
-    var toggleLoader: ((Bool) -> Void)?
+    var showAlert: (() -> Void)?
+    var stateDidChange: ((SportEventsViewState) -> Void)?
     
     // MARK: - Initializers
     init(storageRepository: StorageRepositoryProtocol) {
@@ -34,31 +40,42 @@ final class SportEventsViewModel: SportEventsViewModelProtocol {
         }
     }
     
-    func start() {
+    func loadData() {
+        state = .loading
         fetchData()
     }
     
     func refresh() {
         fetchData()
     }
+    
+    func didTapCreateSportEventButton() {
+        createSportEventHandler?()
+    }
+    
+    func handleErrorState() {
+        showAlert?()
+    }
 }
 
 // MARK: - Private
 private extension SportEventsViewModel {
     func fetchData() {
-        toggleLoader?(true)
-        
         Task {
             do {
                 let data = try await storageRepository.loadData(from: .server, .local)
-                toggleLoader?(false)
                 var snapshot = NSDiffableDataSourceSnapshot<Int, SportEvent>()
                 snapshot.appendSections([0])
                 snapshot.appendItems(data.compactMap { $0 as? SportEvent })
                 
                 await dataSource?.apply(snapshot, animatingDifferences: false)
+                DispatchQueue.main.async {
+                    self.state = .data(data.isEmpty)
+                }
             } catch {
-                
+                DispatchQueue.main.async {
+                    self.state = .error
+                }
             }
         }
     }

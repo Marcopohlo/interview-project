@@ -36,10 +36,10 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIAdaptivePresentat
 }
 
 final class AppCoordinator: Coordinator {
-    let navigationController: UINavigationController
-
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    private let navigationController = UINavigationController()
+    
+    var rootViewController: UIViewController {
+        navigationController
     }
 
     override func start() {
