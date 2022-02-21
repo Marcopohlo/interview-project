@@ -60,7 +60,8 @@ final class CreateSportEventViewModel: CreateSportEventViewModelProtocol {
             timestamp: Date.now.timeIntervalSince1970,
             name: name,
             place: place,
-            duration: duration
+            duration: duration,
+            isRemote: storageType == .server
         )
         storageRepository.saveEvent(in: storageType, event)
         didSaveEvent?()

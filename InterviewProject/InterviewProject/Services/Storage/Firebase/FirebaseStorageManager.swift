@@ -22,8 +22,9 @@ final class FirebaseStorageManager: StorageManagerProtocol {
             let name = data["name"] as? String ?? ""
             let place = data["place"] as? String ?? ""
             let duration = data["duration"] as? TimeInterval ?? 0
+            let isRemote = data["isRemote"] as? Bool ?? true
 
-            return SportEvent(id: id, timestamp: timestamp, name: name, place: place, duration: duration)
+            return SportEvent(id: id, timestamp: timestamp, name: name, place: place, duration: duration, isRemote: isRemote)
         }
     }
     

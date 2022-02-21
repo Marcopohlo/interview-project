@@ -11,6 +11,12 @@ final class SportEventsCell: UITableViewCell {
     // MARK: - Properties
     static let reuseIdentifier = "SportEventsCell"
     
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17, weight: .medium)
@@ -47,6 +53,8 @@ final class SportEventsCell: UITableViewCell {
     
     // MARK: - Configuration
     func configure(with viewModel: SportEventsItemViewModelProtocol) {
+        iconImageView.image = viewModel.icon
+        iconImageView.tintColor = viewModel.iconColor
         nameLabel.text = viewModel.name
         placeLabel.text = viewModel.place
         durationLabel.text = viewModel.duration
@@ -57,14 +65,20 @@ final class SportEventsCell: UITableViewCell {
 private extension SportEventsCell {
     func setupViews() {
         selectionStyle = .none
+        contentView.addSubview(iconImageView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(placeLabel)
         contentView.addSubview(durationLabel)
     }
     
     func setupLayout() {
+        iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        iconImageView.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 2).isActive = true
+        iconImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        iconImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
         nameLabel.topAnchor.constraint(equalToSystemSpacingBelow: contentView.topAnchor, multiplier: 1).isActive = true
-        nameLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 2).isActive = true
+        nameLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: iconImageView.trailingAnchor, multiplier: 1).isActive = true
         nameLabel.setContentHuggingPriority(.defaultLow + 1, for: .vertical)
         
         placeLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 2).isActive = true

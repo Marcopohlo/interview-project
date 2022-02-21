@@ -23,4 +23,6 @@ protocol SportEventsItemViewModelProtocol {
     var name: String { get }
     var place: String { get }
     var duration: String { get }
+    var icon: UIImage? { get }
+    var iconColor: UIColor { get }
 }

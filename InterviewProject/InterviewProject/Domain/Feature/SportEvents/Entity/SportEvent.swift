@@ -14,6 +14,8 @@ protocol Storable {
     var name: String { get }
     var place: String { get }
     var duration: TimeInterval { get }
+    var isRemote: Bool { get }
+    
     var firebaseDictionary: [String: Any] { get }
     var realmObject: Object { get }
 }
@@ -24,6 +26,8 @@ struct SportEvent: Hashable, Storable {
     var name: String
     var place: String
     var duration: TimeInterval
+    var isRemote: Bool
+    
     var firebaseDictionary: [String: Any] {
         let mirror = Mirror(reflecting: self)
         let dictionary = Dictionary(uniqueKeysWithValues: mirror.children.lazy.compactMap { (label: String?, value: Any) -> (String, Any)? in
@@ -52,8 +56,9 @@ final class SportEventObject: Object {
     @Persisted var name: String
     @Persisted var place: String
     @Persisted var duration: TimeInterval
+    @Persisted var isRemote: Bool
     
     var structure: SportEvent {
-        SportEvent(id: id, timestamp: timestamp, name: name, place: place, duration: duration)
+        SportEvent(id: id, timestamp: timestamp, name: name, place: place, duration: duration, isRemote: isRemote)
     }
 }
