@@ -8,5 +8,9 @@
 import Foundation
 
 protocol CreateSportEventViewModelProtocol {
+    var didCancelEventCreation: (() -> Void)? { get set }
+    var didSaveEvent: (() -> Void)? { get set }
+    
+    func cancel()
     func save()
 }

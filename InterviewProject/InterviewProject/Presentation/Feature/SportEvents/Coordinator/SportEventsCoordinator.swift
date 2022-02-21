@@ -9,8 +9,7 @@ import UIKit
 
 final class SportEventsCoordinator: Coordinator {
     // MARK: - Properties
-    var childCoordinators: [Coordinator] = []
-    var navigationController: UINavigationController
+    let navigationController: UINavigationController
     private weak var viewModel: SportEventsViewModelProtocol?
     
     // MARK: - Initializers
@@ -19,7 +18,7 @@ final class SportEventsCoordinator: Coordinator {
     }
     
     // MARK: - Coordinator
-    func start() {
+    override func start() {
         let sportEventsViewModel = DIContainer.container.resolve(SportEventsViewModelProtocol.self)!
         sportEventsViewModel.createSportEventHandler = { [self] in
             showCreateSportEventScreen()
@@ -35,7 +34,6 @@ final class SportEventsCoordinator: Coordinator {
 private extension SportEventsCoordinator {
     func showCreateSportEventScreen() {
         let createSportEventCoordinator = CreateSportEventCoordinator(navigationController: navigationController)
-        childCoordinators.append(createSportEventCoordinator)
-        createSportEventCoordinator.start()
+        pushCoordinator(createSportEventCoordinator)
     }
 }

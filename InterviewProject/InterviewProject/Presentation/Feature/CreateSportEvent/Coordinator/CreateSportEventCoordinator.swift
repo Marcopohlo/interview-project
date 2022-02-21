@@ -9,8 +9,7 @@ import UIKit
 
 final class CreateSportEventCoordinator: Coordinator {
     // MARK: - Properties
-    var childCoordinators: [Coordinator] = []
-    var navigationController: UINavigationController
+    let navigationController: UINavigationController
     
     // MARK: - Initializers
     init(navigationController: UINavigationController) {
@@ -18,10 +17,30 @@ final class CreateSportEventCoordinator: Coordinator {
     }
     
     // MARK: - Coordinator
-    func start() {
-        let createSportEventViewModel = DIContainer.container.resolve(CreateSportEventViewModelProtocol.self)!
+    override func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        self.didFinish?(self)
+    }
+    
+    override func start() {
+        var createSportEventViewModel = DIContainer.container.resolve(CreateSportEventViewModelProtocol.self)!
+        createSportEventViewModel.didCancelEventCreation = { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.navigationController.dismiss(animated: true)
+            self.didFinish?(self)
+        }
+        createSportEventViewModel.didSaveEvent = { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.navigationController.dismiss(animated: true)
+            self.didFinish?(self)
+        }
+        
         let createSportEventViewController = DIContainer.container.resolve(CreateSportEventViewController.self, argument: createSportEventViewModel)!
         let createSportEventNavigationController = UINavigationController(rootViewController: createSportEventViewController)
-        navigationController.topViewController?.present(createSportEventNavigationController, animated: true)
+        createSportEventNavigationController.presentationController?.delegate = self
+        navigationController.present(createSportEventNavigationController, animated: true)
     }
 }

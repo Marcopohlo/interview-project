@@ -36,21 +36,25 @@ final class CreateSportEventViewController: UIViewController {
 //        setUpNavigationBarAppearance()
         setUpBarButtonItems()
     }
+    
+    deinit {
+        print("create deinitialized")
+    }
 }
 
 // MARK: - Setup
 private extension CreateSportEventViewController {
-    func setUpNavigationBarAppearance() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithDefaultBackground()
-        appearance.backgroundColor = .blue
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.barTintColor = .blue
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.compactScrollEdgeAppearance = appearance
-    }
+//    func setUpNavigationBarAppearance() {
+//        let appearance = UINavigationBarAppearance()
+//        appearance.configureWithDefaultBackground()
+//        appearance.backgroundColor = .blue
+//        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+//        navigationController?.navigationBar.barTintColor = .blue
+//        navigationController?.navigationBar.standardAppearance = appearance
+//        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+//        navigationController?.navigationBar.compactAppearance = appearance
+//        navigationController?.navigationBar.compactScrollEdgeAppearance = appearance
+//    }
     
     func setUpBarButtonItems() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(systemItem: .cancel, handler: didTapCancelButton)
@@ -61,9 +65,7 @@ private extension CreateSportEventViewController {
 // MARK: - Actions
 private extension CreateSportEventViewController {
     func didTapCancelButton() {
-        DispatchQueue.main.async {
-            self.dismiss(animated: true)
-        }
+        viewModel.cancel()
     }
     
     func didTapSaveButton() {

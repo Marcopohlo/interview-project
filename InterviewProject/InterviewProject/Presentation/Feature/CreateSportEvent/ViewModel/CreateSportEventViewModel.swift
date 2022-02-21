@@ -8,10 +8,19 @@
 import Foundation
 
 final class CreateSportEventViewModel: CreateSportEventViewModelProtocol {
+    // MARK: - Properties
+    var didCancelEventCreation: (() -> Void)?
+    var didSaveEvent: (() -> Void)?
+    
+    // MARK: - Actions
+    func cancel() {
+        didCancelEventCreation?()
+    }
     
     func save() {
         let storage = DIContainer.container.resolve(StorageRepositoryProtocol.self)
         let event = SportEvent(id: UUID().uuidString, name: "Skok do dálky", place: "Praha", duration: 10)
         storage?.saveEvent(in: .local, event)
+        didSaveEvent?()
     }
 }
