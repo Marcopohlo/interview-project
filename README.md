@@ -1,3 +1,3 @@
 # interview-project
 
-Simply build * run in Simulator or your Device
+Simply build & run in Simulator or your Device
