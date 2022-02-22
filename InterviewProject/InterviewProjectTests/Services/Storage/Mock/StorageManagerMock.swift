@@ -10,12 +10,16 @@ import Foundation
 
 final class StorageManagerMock: StorageManagerProtocol {
     var type: StorageType
+    private let shouldThrow: Bool
+    
     var started = false
     var savedEvent: Storable?
-    var data: [Storable] = [SportEventMock()]
+    var data: [Storable] = []
+    var loadDataMethodCalled = false
     
-    init(storageType: StorageType) {
+    init(storageType: StorageType, shouldThrow: Bool = false) {
         self.type = storageType
+        self.shouldThrow = shouldThrow
     }
     
     func start() {
@@ -23,7 +27,12 @@ final class StorageManagerMock: StorageManagerProtocol {
     }
     
     func loadData() async throws -> [Storable] {
-        return data
+        loadDataMethodCalled = true
+        if shouldThrow {
+            throw StorageError.unableToFetch
+        } else {
+            return data
+        }
     }
     
     func saveEvent(_ event: Storable) {

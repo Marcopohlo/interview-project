@@ -42,7 +42,7 @@ struct SportEventMock: Storable {
     
     init() {
         let dateComponents = DateComponents(year: 2022, month: 2, day: 22, hour: 10, minute: 0, second: 0, nanosecond: 0)
-        id = "1"
+        id = UUID().uuidString
         timestamp = Calendar(identifier: .gregorian).date(from: dateComponents)?.timeIntervalSince1970 ?? 0
         name = "Mock Event"
         place = "Prague"

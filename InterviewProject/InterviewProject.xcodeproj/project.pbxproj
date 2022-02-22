@@ -12,6 +12,7 @@
 		4419866C27C4EB2D004DEE6E /* StorageRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419866B27C4EB2D004DEE6E /* StorageRepositoryMock.swift */; };
 		4419866F27C4EB67004DEE6E /* StorageManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419866E27C4EB67004DEE6E /* StorageManagerMock.swift */; };
 		4419867627C4EC9C004DEE6E /* SportEventMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419867527C4EC9C004DEE6E /* SportEventMock.swift */; };
+		4419867827C50420004DEE6E /* StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4419867727C50420004DEE6E /* StorageTests.swift */; };
 		4424D46327C29EA5009B00FC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4424D46227C29EA5009B00FC /* GoogleService-Info.plist */; };
 		4424D46927C2A11C009B00FC /* StorageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D46827C2A11C009B00FC /* StorageRepository.swift */; };
 		4424D46C27C2A265009B00FC /* StorageManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D46B27C2A265009B00FC /* StorageManagerProtocol.swift */; };
@@ -64,6 +65,7 @@
 		4419866B27C4EB2D004DEE6E /* StorageRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRepositoryMock.swift; sourceTree = "<group>"; };
 		4419866E27C4EB67004DEE6E /* StorageManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerMock.swift; sourceTree = "<group>"; };
 		4419867527C4EC9C004DEE6E /* SportEventMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventMock.swift; sourceTree = "<group>"; };
+		4419867727C50420004DEE6E /* StorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTests.swift; sourceTree = "<group>"; };
 		4424D46227C29EA5009B00FC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4424D46827C2A11C009B00FC /* StorageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRepository.swift; sourceTree = "<group>"; };
 		4424D46B27C2A265009B00FC /* StorageManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerProtocol.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				4419866D27C4EB36004DEE6E /* Mock */,
+				4419867727C50420004DEE6E /* StorageTests.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				4419866C27C4EB2D004DEE6E /* StorageRepositoryMock.swift in Sources */,
 				4419866F27C4EB67004DEE6E /* StorageManagerMock.swift in Sources */,
 				4419867627C4EC9C004DEE6E /* SportEventMock.swift in Sources */,
+				4419867827C50420004DEE6E /* StorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
