@@ -12,7 +12,7 @@ final class CreateSportEventViewModelTests: XCTestCase {
     
     func testCancel() throws {
         let expectation = XCTestExpectation()
-        var viewModel = viewModel()
+        let viewModel = viewModel()
         viewModel.didCancelEventCreation = {
             expectation.fulfill()
         }
@@ -23,7 +23,7 @@ final class CreateSportEventViewModelTests: XCTestCase {
     func testSaveEvent() throws {
         let expectation = XCTestExpectation()
         let storageRepositoryMock = StorageRepositoryMock()
-        var viewModel = viewModel(storageRepository: storageRepositoryMock)
+        let viewModel = viewModel(storageRepository: storageRepositoryMock)
         viewModel.didSaveEvent = {
             XCTAssertEqual(storageRepositoryMock.savedEvent?.name, "Mock Event")
             XCTAssertEqual(storageRepositoryMock.savedEvent?.place, "Mock Place")
@@ -47,7 +47,7 @@ final class CreateSportEventViewModelTests: XCTestCase {
     
     func testShowMissingItemsAlert() throws {
         let expectation = XCTestExpectation()
-        var viewModel = viewModel()
+        let viewModel = viewModel()
         viewModel.showAlert = {
             expectation.fulfill()
         }
@@ -57,7 +57,7 @@ final class CreateSportEventViewModelTests: XCTestCase {
     
     func testShowActionSheet() throws {
         let expectation = XCTestExpectation()
-        var viewModel = viewModel()
+        let viewModel = viewModel()
         viewModel.showActionSheet = {
             expectation.fulfill()
         }

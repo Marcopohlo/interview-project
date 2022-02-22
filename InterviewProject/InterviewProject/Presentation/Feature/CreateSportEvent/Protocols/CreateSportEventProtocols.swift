@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CreateSportEventViewModelProtocol {
+protocol CreateSportEventViewModelProtocol: AnyObject {
     var didCancelEventCreation: (() -> Void)? { get set }
     var didSaveEvent: (() -> Void)? { get set }
     var showAlert: (() -> Void)? { get set }

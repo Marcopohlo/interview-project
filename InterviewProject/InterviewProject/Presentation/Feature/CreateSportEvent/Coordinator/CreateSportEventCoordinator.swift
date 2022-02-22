@@ -24,7 +24,7 @@ final class CreateSportEventCoordinator: Coordinator {
     }
     
     override func start() {
-        var createSportEventViewModel = DIContainer.container.resolve(CreateSportEventViewModelProtocol.self)!
+        let createSportEventViewModel = DIContainer.container.resolve(CreateSportEventViewModelProtocol.self)!
         createSportEventViewModel.didCancelEventCreation = { [weak self] in
             guard let self = self else {
                 return
