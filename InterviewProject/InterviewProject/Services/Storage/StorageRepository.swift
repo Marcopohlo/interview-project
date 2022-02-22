@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum StorageError: Error {
+    case unableToFetch
+}
+
 final class StorageRepository: StorageRepositoryProtocol {
     private let managers: [StorageManagerProtocol]
     
@@ -22,7 +26,15 @@ final class StorageRepository: StorageRepositoryProtocol {
         let filteredManagers = managers.filter { storageTypes.contains($0.type) }
         
         var data: [Storable] = []
-        try await filteredManagers.asyncForEach { data.append(contentsOf: try await $0.loadData()) }
+        try await filteredManagers.asyncForEach {
+            do {
+                data.append(contentsOf: try await $0.loadData())
+            } catch {
+                if filteredManagers.count == 1 {
+                    throw StorageError.unableToFetch
+                }
+            }
+        }
         return data.sorted { $0.timestamp > $1.timestamp }
     }
     

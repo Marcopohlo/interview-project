@@ -80,6 +80,8 @@ private extension SportEventsViewModel {
                 }
             } catch {
                 DispatchQueue.main.async {
+                    let snapshot = NSDiffableDataSourceSnapshot<Int, SportEvent>()
+                    self.dataSource?.apply(snapshot, animatingDifferences: false)
                     self.state = .error
                 }
             }

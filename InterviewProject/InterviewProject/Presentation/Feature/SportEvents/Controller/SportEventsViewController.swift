@@ -173,8 +173,7 @@ private extension SportEventsViewController {
     }
     
     func handleErrorState() {
-        tableView.refreshControl?.endRefreshing()
-        activityIndicatorView.removeFromSuperview()
+        handleDataState(isEmpty: true)
         viewModel.handleErrorState()
     }
 }

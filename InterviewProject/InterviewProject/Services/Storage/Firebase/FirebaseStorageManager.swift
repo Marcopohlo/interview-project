@@ -10,12 +10,20 @@ import Firebase
 final class FirebaseStorageManager: StorageManagerProtocol {
     var type: StorageType = .server
     
+    private lazy var firestore: Firestore = {
+        let settings = FirestoreSettings()
+        settings.isPersistenceEnabled = false
+        let db = Firestore.firestore()
+        db.settings = settings
+        return db
+    }()
+    
     func start() {
         FirebaseApp.configure()
     }
     
     func loadData() async throws -> [Storable] {
-        try await Firestore.firestore().collection("events").getDocuments(source: .server).documents.map { snapshot in
+        try await firestore.collection("events").getDocuments(source: .server).documents.map { snapshot in
             let data = snapshot.data()
             let id = data["id"] as? String ?? ""
             let timestamp = data["timestamp"] as? TimeInterval ?? 0
@@ -30,6 +38,6 @@ final class FirebaseStorageManager: StorageManagerProtocol {
     
     func saveEvent(_ event: Storable) {
         let data = event.firebaseDictionary
-        Firestore.firestore().collection("events").addDocument(data: data)
+        firestore.collection("events").addDocument(data: data)
     }
 }
