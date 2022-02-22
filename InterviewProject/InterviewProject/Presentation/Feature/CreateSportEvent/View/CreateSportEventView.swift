@@ -34,11 +34,41 @@ final class CreateSportEventView: UIView {
         return view
     }()
     
+    private lazy var firstSeparatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        view.backgroundColor = .systemGray6
+        return view
+    }()
+    
+    private lazy var secondSeparatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        view.backgroundColor = .systemGray6
+        return view
+    }()
+    
+    private lazy var textFieldContentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var textFieldStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 8
+        return stackView
+    }()
+    
     lazy var nameTextField: UITextField = {
         let nameTextField = UITextField()
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         nameTextField.placeholder = "Name"
-        nameTextField.borderStyle = .roundedRect
         return nameTextField
     }()
     
@@ -46,7 +76,6 @@ final class CreateSportEventView: UIView {
         let placeTextField = UITextField()
         placeTextField.translatesAutoresizingMaskIntoConstraints = false
         placeTextField.placeholder = "Place"
-        placeTextField.borderStyle = .roundedRect
         return placeTextField
     }()
     
@@ -90,11 +119,15 @@ private extension CreateSportEventView {
         addSubview(scrollView)
         
         scrollView.addSubview(contentView)
-        
         contentView.addSubview(stackView)
-        stackView.addArrangedSubview(nameTextField)
-        stackView.addArrangedSubview(placeTextField)
+        stackView.addArrangedSubview(textFieldContentView)
         stackView.addArrangedSubview(pickerView)
+        
+        textFieldContentView.addSubview(textFieldStackView)
+        textFieldStackView.addArrangedSubview(nameTextField)
+        textFieldStackView.addArrangedSubview(firstSeparatorView)
+        textFieldStackView.addArrangedSubview(placeTextField)
+        textFieldStackView.addArrangedSubview(secondSeparatorView)
     }
     
     func setupLayout() {
@@ -117,5 +150,10 @@ private extension CreateSportEventView {
         stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
         stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
         stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        
+        textFieldStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: textFieldContentView.leadingAnchor, multiplier: 2).isActive = true
+        textFieldContentView.trailingAnchor.constraint(equalToSystemSpacingAfter: textFieldStackView.trailingAnchor, multiplier: 2).isActive = true
+        textFieldStackView.topAnchor.constraint(equalToSystemSpacingBelow: textFieldContentView.topAnchor, multiplier: 2).isActive = true
+        textFieldStackView.bottomAnchor.constraint(equalTo: textFieldContentView.bottomAnchor).isActive = true
     }
 }
