@@ -847,6 +847,7 @@
 				DEVELOPMENT_TEAM = 6R8HES4VQ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InterviewProject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sport Events";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -874,6 +875,7 @@
 				DEVELOPMENT_TEAM = 6R8HES4VQ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InterviewProject/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sport Events";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
