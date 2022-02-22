@@ -15,4 +15,8 @@ extension TimeInterval {
         formatter.zeroFormattingBehavior = .pad
         return formatter.string(from: self) ?? ""
     }
+    
+    static var defaultTimeout: Self {
+        5
+    }
 }

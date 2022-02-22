@@ -39,7 +39,7 @@ final class StorageRepository: StorageRepositoryProtocol {
     }
     
     func saveEvent(in storageType: StorageType, _ event: Storable) {
-        let filteredManagers = managers.filter { $0.type == storageType }
-        filteredManagers.forEach { $0.saveEvent(event) }
+        let manager = managers.first { $0.type == storageType }
+        manager?.saveEvent(event)
     }
 }

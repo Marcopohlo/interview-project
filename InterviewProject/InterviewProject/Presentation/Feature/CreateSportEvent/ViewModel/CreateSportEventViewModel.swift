@@ -38,7 +38,7 @@ final class CreateSportEventViewModel: CreateSportEventViewModelProtocol {
     
     private lazy var pickerItems: [([Int], String)] = {
         [
-            (Array(0...24), "h"),
+            (Array(0...23), "h"),
             (Array(0...59), "m"),
             (Array(0...59), "s")
         ]
