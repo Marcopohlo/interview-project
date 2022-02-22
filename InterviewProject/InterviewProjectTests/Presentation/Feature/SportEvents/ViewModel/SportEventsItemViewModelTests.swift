@@ -10,7 +10,7 @@ import XCTest
 
 final class SportEventsItemViewModelTests: XCTestCase {
 
-    func testRemoteEventData() throws {
+    func testRemoteEventData() {
         let event = SportEventMock()
         let viewModel = SportEventsItemViewModel(event: event)
         XCTAssertEqual(viewModel.name, event.name)
@@ -20,7 +20,7 @@ final class SportEventsItemViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.iconColor, .systemCyan)
     }
     
-    func testLocalEventData() throws {
+    func testLocalEventData() {
         var event = SportEventMock()
         event.isRemote = false
         let viewModel = SportEventsItemViewModel(event: event)

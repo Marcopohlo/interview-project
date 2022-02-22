@@ -10,14 +10,14 @@ import XCTest
 
 final class SportEventsViewModelTests: XCTestCase {
     
-    func testBinding() throws {
+    func testBinding() {
         let tableView = UITableView()
         let viewModel = viewModel()
         viewModel.bind(to: tableView)
         XCTAssertNotNil(tableView.dataSource)
     }
 
-    func testLoadDataSuccess() throws {
+    func testLoadDataSuccess() {
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 2
         
@@ -37,7 +37,7 @@ final class SportEventsViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: .defaultTimeout)
     }
     
-    func testLoadDataFailed() throws {
+    func testLoadDataFailed() {
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 2
         
@@ -57,7 +57,7 @@ final class SportEventsViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: .defaultTimeout)
     }
     
-    func testRefresh() throws {
+    func testRefresh() {
         let expectation = XCTestExpectation()
         
         let viewModel = viewModel()
@@ -74,7 +74,7 @@ final class SportEventsViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: .defaultTimeout)
     }
     
-    func testBarButtonItem() throws {
+    func testBarButtonItem() {
         let expectation = XCTestExpectation()
         
         let viewModel = viewModel()
@@ -86,7 +86,7 @@ final class SportEventsViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: .defaultTimeout)
     }
     
-    func testAlert() throws {
+    func testAlert() {
         let expectation = XCTestExpectation()
         
         let viewModel = viewModel()
@@ -98,7 +98,7 @@ final class SportEventsViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: .defaultTimeout)
     }
     
-    func testSegmentChange() throws {
+    func testSegmentChange() {
         let expectation = XCTestExpectation()
         expectation.expectedFulfillmentCount = 2
         

@@ -10,7 +10,7 @@ import XCTest
 
 final class CreateSportEventViewModelTests: XCTestCase {
     
-    func testCancel() throws {
+    func testCancel() {
         let expectation = XCTestExpectation()
         let viewModel = viewModel()
         viewModel.didCancelEventCreation = {
@@ -20,7 +20,7 @@ final class CreateSportEventViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: .defaultTimeout)
     }
 
-    func testSaveEvent() throws {
+    func testSaveEvent() {
         let expectation = XCTestExpectation()
         let storageRepositoryMock = StorageRepositoryMock()
         let viewModel = viewModel(storageRepository: storageRepositoryMock)
@@ -36,7 +36,7 @@ final class CreateSportEventViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: .defaultTimeout)
     }
     
-    func testPicker() throws {
+    func testPicker() {
         let viewModel = viewModel()
         XCTAssertEqual(viewModel.numberOfPickerComponents(), 3)
         XCTAssertEqual(viewModel.numberOfPickerRowsInComponent(0), 24)
@@ -45,7 +45,7 @@ final class CreateSportEventViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.titleForRow(5, forComponent: 1), "5 m")
     }
     
-    func testShowMissingItemsAlert() throws {
+    func testShowMissingItemsAlert() {
         let expectation = XCTestExpectation()
         let viewModel = viewModel()
         viewModel.showAlert = {
@@ -55,7 +55,7 @@ final class CreateSportEventViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: .defaultTimeout)
     }
     
-    func testShowActionSheet() throws {
+    func testShowActionSheet() {
         let expectation = XCTestExpectation()
         let viewModel = viewModel()
         viewModel.showActionSheet = {

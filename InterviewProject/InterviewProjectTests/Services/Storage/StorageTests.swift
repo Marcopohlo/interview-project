@@ -10,7 +10,7 @@ import XCTest
 
 final class StorageTests: XCTestCase {
 
-    func testSave() throws {
+    func testSave() {
         let remoteStorageManager = StorageManagerMock(storageType: .server)
         let localStorageManager = StorageManagerMock(storageType: .local)
         
@@ -27,7 +27,7 @@ final class StorageTests: XCTestCase {
         XCTAssertNil(localStorageManager.savedEvent)
     }
     
-    func testLoadDataSuccess() async throws {
+    func testLoadDataSuccess() async {
         let remoteStorageManager = StorageManagerMock(storageType: .server)
         let localStorageManager = StorageManagerMock(storageType: .local)
         
@@ -48,7 +48,7 @@ final class StorageTests: XCTestCase {
         }
     }
     
-    func testLoadDataFail() async throws {
+    func testLoadDataFail() async {
         let remoteStorageManager = StorageManagerMock(storageType: .server, shouldThrow: true)
         
         let repository = StorageRepository(managers: [remoteStorageManager])
