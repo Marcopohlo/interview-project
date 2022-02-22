@@ -13,6 +13,12 @@ final class StorageRepositoryMock: StorageRepositoryProtocol {
     var loadStorageTypes: [StorageType]?
     var saveStorageType: StorageType?
     var savedEvent: Storable?
+    
+    private let shouldThrow: Bool
+    
+    init(shouldThrow: Bool = false) {
+        self.shouldThrow = shouldThrow
+    }
         
     func start() {
         started = true
@@ -20,7 +26,11 @@ final class StorageRepositoryMock: StorageRepositoryProtocol {
     
     func loadData(from storageTypes: [StorageType]) async throws -> [Storable] {
         loadStorageTypes = storageTypes
-        return [SportEventMock()]
+        if shouldThrow {
+            throw StorageError.unableToFetch
+        } else {
+            return [SportEventMock()]
+        }
     }
     
     func saveEvent(in storageType: StorageType, _ event: Storable) {

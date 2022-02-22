@@ -24,10 +24,10 @@ struct SportEventsItemViewModel: SportEventsItemViewModelProtocol {
     var iconColor: UIColor {
         event.isRemote ? .systemCyan : .systemGray
     }
-    private let event: SportEvent
+    private let event: Storable
     
     // MARK: - Initializers
-    init(event: SportEvent) {
+    init(event: Storable) {
         self.event = event
     }
 }
