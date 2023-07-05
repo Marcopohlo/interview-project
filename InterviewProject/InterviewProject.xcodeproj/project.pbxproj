@@ -371,53 +371,13 @@
 		447263E327C221270006663D /* CreateSportEvent */ = {
 			isa = PBXGroup;
 			children = (
-				447263F327C230C70006663D /* View */,
-				447263ED27C222B70006663D /* Protocols */,
-				447263EA27C2227C0006663D /* ViewModel */,
-				447263E727C221780006663D /* Coordinator */,
-				447263E427C2214E0006663D /* Controller */,
-			);
-			path = CreateSportEvent;
-			sourceTree = "<group>";
-		};
-		447263E427C2214E0006663D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				447263F427C230DD0006663D /* CreateSportEventView.swift */,
+				447263EE27C222C40006663D /* CreateSportEventProtocols.swift */,
+				447263EB27C222880006663D /* CreateSportEventViewModel.swift */,
+				447263E827C2218E0006663D /* CreateSportEventCoordinator.swift */,
 				447263E527C221610006663D /* CreateSportEventViewController.swift */,
 			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		447263E727C221780006663D /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				447263E827C2218E0006663D /* CreateSportEventCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		447263EA27C2227C0006663D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				447263EB27C222880006663D /* CreateSportEventViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		447263ED27C222B70006663D /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				447263EE27C222C40006663D /* CreateSportEventProtocols.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		447263F327C230C70006663D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				447263F427C230DD0006663D /* CreateSportEventView.swift */,
-			);
-			path = View;
+			path = CreateSportEvent;
 			sourceTree = "<group>";
 		};
 		44F6BA3B27C164B2006F2EE7 = {

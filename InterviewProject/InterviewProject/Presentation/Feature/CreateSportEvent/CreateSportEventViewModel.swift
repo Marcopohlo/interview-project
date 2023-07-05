@@ -5,6 +5,7 @@
 //  Created by Marek Pohl on 20.02.2022.
 //
 
+import Combine
 import Foundation
 
 final class CreateSportEventViewModel: CreateSportEventViewModelProtocol {
@@ -31,10 +32,10 @@ final class CreateSportEventViewModel: CreateSportEventViewModelProtocol {
     }
     private var storageType: StorageType = .local
     
-    var didCancelEventCreation: (() -> Void)?
-    var didSaveEvent: (() -> Void)?
-    var showAlert: (() -> Void)?
-    var showActionSheet: (() -> Void)?
+    let cancelEventCreationAction: PassthroughSubject<Void, Never>
+    let saveEventAction: PassthroughSubject<Void, Never>
+    let showAlertAction: PassthroughSubject<Void, Never>
+    let showActionSheetAction: PassthroughSubject<Void, Never>
     
     private lazy var pickerItems: [([Int], String)] = {
         [
@@ -46,8 +47,18 @@ final class CreateSportEventViewModel: CreateSportEventViewModelProtocol {
     private var selectedItems: [Int] = [0, 0, 0]
     
     // MARK: - Initializers
-    init(storageRepository: StorageRepositoryProtocol) {
+    init(
+        storageRepository: StorageRepositoryProtocol,
+        cancelEventCreationAction: PassthroughSubject<Void, Never>,
+        saveEventAction: PassthroughSubject<Void, Never>,
+        showAlertAction: PassthroughSubject<Void, Never>,
+        showActionSheetAction: PassthroughSubject<Void, Never>
+    ) {
         self.storageRepository = storageRepository
+        self.cancelEventCreationAction = cancelEventCreationAction
+        self.saveEventAction = saveEventAction
+        self.showAlertAction = showAlertAction
+        self.showActionSheetAction = showActionSheetAction
     }
     
     // MARK: - Actions
@@ -64,19 +75,19 @@ final class CreateSportEventViewModel: CreateSportEventViewModelProtocol {
             isRemote: storageType == .server
         )
         storageRepository.saveEvent(in: storageType, event)
-        didSaveEvent?()
+        saveEventAction.send()
     }
     
     func didTapCancelButton() {
-        didCancelEventCreation?()
+        cancelEventCreationAction.send()
     }
     
     func didTapSaveButton() {
         guard name?.isEmpty == false, place?.isEmpty == false else {
-            showAlert?()
+            showAlertAction.send()
             return
         }
-        showActionSheet?()
+        showActionSheetAction.send()
     }
     
     func nameTextFieldEditingChanged(_ name: String) {

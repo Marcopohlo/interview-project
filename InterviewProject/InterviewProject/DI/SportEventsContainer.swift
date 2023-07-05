@@ -5,11 +5,17 @@
 //  Created by Marek Pohl on 19.02.2022.
 //
 
+import Combine
 import Foundation
 import Swinject
 
 struct SportEventsContainer {
     private let container: Container
+    
+    let cancelEventCreationAction: PassthroughSubject<Void, Never> = .init()
+    let saveEventAction: PassthroughSubject<Void, Never> = .init()
+    let showAlertAction: PassthroughSubject<Void, Never> = .init()
+    let showActionSheetAction: PassthroughSubject<Void, Never> = .init()
     
     init(container: Container) {
         self.container = container
@@ -25,7 +31,13 @@ struct SportEventsContainer {
         }
         
         container.register(CreateSportEventViewModelProtocol.self) { resolver in
-            CreateSportEventViewModel(storageRepository: resolver.resolve(StorageRepositoryProtocol.self)!)
+            CreateSportEventViewModel(
+                storageRepository: resolver.resolve(StorageRepositoryProtocol.self)!,
+                cancelEventCreationAction: cancelEventCreationAction,
+                saveEventAction: saveEventAction,
+                showAlertAction: showAlertAction,
+                showActionSheetAction: showActionSheetAction
+            )
         }
         
         container.register(CreateSportEventViewController.self) { _, viewModel in
