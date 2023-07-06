@@ -16,15 +16,15 @@ final class SportEventsItemViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.name, event.name)
         XCTAssertEqual(viewModel.place, event.place)
         XCTAssertEqual(viewModel.duration, event.duration.asString(style: .positional))
-        XCTAssertEqual(viewModel.icon, UIImage(systemName: "cloud.fill"))
-        XCTAssertEqual(viewModel.iconColor, .systemCyan)
+        XCTAssertEqual(viewModel.iconName, "cloud.fill")
+        XCTAssertEqual(viewModel.iconColor, .cyan)
     }
     
     func testLocalEventData() {
         var event = SportEventMock()
         event.isRemote = false
         let viewModel = SportEventsItemViewModel(event: event)
-        XCTAssertEqual(viewModel.icon, UIImage(systemName: "externaldrive.fill"))
-        XCTAssertEqual(viewModel.iconColor, .systemGray)
+        XCTAssertEqual(viewModel.iconName, "externaldrive.fill")
+        XCTAssertEqual(viewModel.iconColor, .gray)
     }
 }

@@ -5,17 +5,27 @@
 //  Created by Marek Pohl on 22.02.2022.
 //
 
+import Combine
 import XCTest
 @testable import InterviewProject
 
 final class CreateSportEventViewModelTests: XCTestCase {
     
+    private var cancellables: Set<AnyCancellable> = []
+    
+    private let cancelEventCreationAction: PassthroughSubject<Void, Never> = .init()
+    private let saveEventAction: PassthroughSubject<Void, Never> = .init()
+    private let showAlertAction: PassthroughSubject<Void, Never> = .init()
+    private let showActionSheetAction: PassthroughSubject<Void, Never> = .init()
+    
     func testCancel() {
         let expectation = XCTestExpectation()
         let viewModel = viewModel()
-        viewModel.didCancelEventCreation = {
-            expectation.fulfill()
-        }
+        viewModel.cancelEventCreationAction
+            .sink {
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
         viewModel.didTapCancelButton()
         wait(for: [expectation], timeout: .defaultTimeout)
     }
@@ -24,11 +34,13 @@ final class CreateSportEventViewModelTests: XCTestCase {
         let expectation = XCTestExpectation()
         let storageRepositoryMock = StorageRepositoryMock()
         let viewModel = viewModel(storageRepository: storageRepositoryMock)
-        viewModel.didSaveEvent = {
-            XCTAssertEqual(storageRepositoryMock.savedEvent?.name, "Mock Event")
-            XCTAssertEqual(storageRepositoryMock.savedEvent?.place, "Mock Place")
-            expectation.fulfill()
-        }
+        viewModel.saveEventAction
+            .sink {
+                XCTAssertEqual(storageRepositoryMock.savedEvent?.name, "Mock Event")
+                XCTAssertEqual(storageRepositoryMock.savedEvent?.place, "Mock Place")
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
         viewModel.nameTextFieldEditingChanged("Mock Event")
         viewModel.placeTextFieldEditingChanged("Mock Place")
         viewModel.didSelectPickerRow(4, inComponent: 0)
@@ -48,9 +60,11 @@ final class CreateSportEventViewModelTests: XCTestCase {
     func testShowMissingItemsAlert() {
         let expectation = XCTestExpectation()
         let viewModel = viewModel()
-        viewModel.showAlert = {
-            expectation.fulfill()
-        }
+        viewModel.showAlertAction
+            .sink {
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
         viewModel.didTapSaveButton()
         wait(for: [expectation], timeout: .defaultTimeout)
     }
@@ -58,9 +72,11 @@ final class CreateSportEventViewModelTests: XCTestCase {
     func testShowActionSheet() {
         let expectation = XCTestExpectation()
         let viewModel = viewModel()
-        viewModel.showActionSheet = {
-            expectation.fulfill()
-        }
+        viewModel.showActionSheetAction
+            .sink {
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
         viewModel.nameTextFieldEditingChanged("Mock Event")
         viewModel.placeTextFieldEditingChanged("Mock Place")
         viewModel.didSelectPickerRow(4, inComponent: 0)
@@ -71,6 +87,12 @@ final class CreateSportEventViewModelTests: XCTestCase {
 
 private extension CreateSportEventViewModelTests {
     func viewModel(storageRepository: StorageRepositoryProtocol = StorageRepositoryMock()) -> CreateSportEventViewModelProtocol {
-        CreateSportEventViewModel(storageRepository: storageRepository)
+        CreateSportEventViewModel(
+            storageRepository: storageRepository,
+            cancelEventCreationAction: cancelEventCreationAction,
+            saveEventAction: saveEventAction,
+            showAlertAction: showAlertAction,
+            showActionSheetAction: showActionSheetAction
+        )
     }
 }
