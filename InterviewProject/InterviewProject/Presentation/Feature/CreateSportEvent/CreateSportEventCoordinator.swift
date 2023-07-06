@@ -11,13 +11,16 @@ import UIKit
 final class CreateSportEventCoordinator: Coordinator {
     // MARK: - Properties
     private let navigationController: UINavigationController
+    private let reloadListAction: PassthroughSubject<Void, Never>
     private var cancellables: Set<AnyCancellable> = []
     
-    var didSaveSuccessfully: (() -> Void)?
-    
     // MARK: - Initializers
-    init(navigationController: UINavigationController) {
+    init(
+        navigationController: UINavigationController,
+        reloadListAction: PassthroughSubject<Void, Never>
+    ) {
         self.navigationController = navigationController
+        self.reloadListAction = reloadListAction
     }
     
     // MARK: - Coordinator
@@ -44,7 +47,7 @@ final class CreateSportEventCoordinator: Coordinator {
                 }
                 self.navigationController.dismiss(animated: true)
                 self.didFinish?(self)
-                self.didSaveSuccessfully?()
+                self.reloadListAction.send()
             }
             .store(in: &cancellables)
         

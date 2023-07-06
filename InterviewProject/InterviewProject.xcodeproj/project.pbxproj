@@ -28,7 +28,6 @@
 		4424D48427C2E3B2009B00FC /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4424D48327C2E3B2009B00FC /* RealmSwift */; };
 		4424D48727C2E3D3009B00FC /* RealmStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4424D48627C2E3D3009B00FC /* RealmStorageManager.swift */; };
 		445C4BC727C533460053F7BD /* SportEventsItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445C4BC627C533460053F7BD /* SportEventsItemViewModelTests.swift */; };
-		4462FA0A2A56C2440090408C /* SportEventsTableViewDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4462FA092A56C2440090408C /* SportEventsTableViewDiffableDataSource.swift */; };
 		447263D127C17E2A0006663D /* SportEventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D027C17E2A0006663D /* SportEventsViewModel.swift */; };
 		447263D427C180260006663D /* SportEventsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D327C180260006663D /* SportEventsProtocols.swift */; };
 		447263D627C1852F0006663D /* SportEventsItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447263D527C1852F0006663D /* SportEventsItemViewModel.swift */; };
@@ -81,7 +80,6 @@
 		4424D47E27C2E0AC009B00FC /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		4424D48627C2E3D3009B00FC /* RealmStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorageManager.swift; sourceTree = "<group>"; };
 		445C4BC627C533460053F7BD /* SportEventsItemViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsItemViewModelTests.swift; sourceTree = "<group>"; };
-		4462FA092A56C2440090408C /* SportEventsTableViewDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsTableViewDiffableDataSource.swift; sourceTree = "<group>"; };
 		447263D027C17E2A0006663D /* SportEventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsViewModel.swift; sourceTree = "<group>"; };
 		447263D327C180260006663D /* SportEventsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsProtocols.swift; sourceTree = "<group>"; };
 		447263D527C1852F0006663D /* SportEventsItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportEventsItemViewModel.swift; sourceTree = "<group>"; };
@@ -444,7 +442,6 @@
 				447263D527C1852F0006663D /* SportEventsItemViewModel.swift */,
 				44F6BA8927C176FF006F2EE7 /* SportEventsCoordinator.swift */,
 				44F6BA8327C172F6006F2EE7 /* SportEventsViewController.swift */,
-				4462FA092A56C2440090408C /* SportEventsTableViewDiffableDataSource.swift */,
 			);
 			path = SportEvents;
 			sourceTree = "<group>";
@@ -577,7 +574,6 @@
 				4424D47127C2A3D5009B00FC /* FirebaseStorageManager.swift in Sources */,
 				447263DC27C199750006663D /* SportEventsViewState.swift in Sources */,
 				447263EC27C222880006663D /* CreateSportEventViewModel.swift in Sources */,
-				4462FA0A2A56C2440090408C /* SportEventsTableViewDiffableDataSource.swift in Sources */,
 				4424D46927C2A11C009B00FC /* StorageRepository.swift in Sources */,
 				447263E927C2218E0006663D /* CreateSportEventCoordinator.swift in Sources */,
 				44F6BA8A27C176FF006F2EE7 /* SportEventsCoordinator.swift in Sources */,

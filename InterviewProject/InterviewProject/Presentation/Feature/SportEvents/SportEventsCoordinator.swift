@@ -12,6 +12,7 @@ final class SportEventsCoordinator: Coordinator {
     // MARK: - Properties
     private let navigationController: UINavigationController
     private var cancellables: Set<AnyCancellable> = []
+    private let reloadListAction: PassthroughSubject<Void, Never> = .init()
     
     // MARK: - Initializers
     init(navigationController: UINavigationController) {
@@ -23,13 +24,19 @@ final class SportEventsCoordinator: Coordinator {
         let sportEventsViewModel = DIContainer.container.resolve(SportEventsViewModelProtocol.self)!
         sportEventsViewModel.createSportEventAction
             .sink { [weak self] in
-                self?.showCreateSportEventScreen(viewModel: sportEventsViewModel)
+                self?.showCreateSportEventScreen()
             }
             .store(in: &cancellables)
         
         sportEventsViewModel.showAlertAction
             .sink { [weak self] in
                 self?.showAlert()
+            }
+            .store(in: &cancellables)
+        
+        reloadListAction
+            .sink {
+                sportEventsViewModel.loadData()
             }
             .store(in: &cancellables)
         
@@ -40,11 +47,11 @@ final class SportEventsCoordinator: Coordinator {
 
 // MARK: - Private
 private extension SportEventsCoordinator {
-    func showCreateSportEventScreen(viewModel: SportEventsViewModelProtocol) {
-        let createSportEventCoordinator = CreateSportEventCoordinator(navigationController: navigationController)
-        createSportEventCoordinator.didSaveSuccessfully = {
-            viewModel.loadData()
-        }
+    func showCreateSportEventScreen() {
+        let createSportEventCoordinator = CreateSportEventCoordinator(
+            navigationController: navigationController,
+            reloadListAction: reloadListAction
+        )
         pushCoordinator(createSportEventCoordinator)
     }
 }
