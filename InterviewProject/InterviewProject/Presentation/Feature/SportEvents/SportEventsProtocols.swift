@@ -5,14 +5,15 @@
 //  Created by Marek Pohl on 19.02.2022.
 //
 
+import Combine
 import UIKit
 
 protocol SportEventsViewModelProtocol: AnyObject {
-    var createSportEventHandler: (() -> Void)? { get set }
-    var showAlert: (() -> Void)? { get set }
-    var stateDidChange: ((SportEventsViewState) -> Void)? { get set }
+    var stateSubject: CurrentValueSubject<SportEventsViewState, Never> { get }
+    var dataSubject: CurrentValueSubject<[Storable], Never> { get }
+    var createSportEventAction: PassthroughSubject<Void, Never> { get }
+    var showAlertAction: PassthroughSubject<Void, Never> { get }
     
-    func bind(to tableView: UITableView)
     func loadData()
     func refresh()
     func didTapCreateSportEventButton()

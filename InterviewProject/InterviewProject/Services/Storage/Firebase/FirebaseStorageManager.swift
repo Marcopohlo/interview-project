@@ -5,6 +5,7 @@
 //  Created by Marek Pohl on 20.02.2022.
 //
 
+import Foundation
 import Firebase
 
 final class FirebaseStorageManager: StorageManagerProtocol {
@@ -12,7 +13,7 @@ final class FirebaseStorageManager: StorageManagerProtocol {
     
     private lazy var firestore: Firestore = {
         let settings = FirestoreSettings()
-        settings.isPersistenceEnabled = false
+        settings.cacheSettings = MemoryCacheSettings()
         let db = Firestore.firestore()
         db.settings = settings
         return db

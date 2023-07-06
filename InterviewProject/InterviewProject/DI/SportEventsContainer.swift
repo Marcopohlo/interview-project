@@ -16,6 +16,9 @@ struct SportEventsContainer {
     let saveEventAction: PassthroughSubject<Void, Never> = .init()
     let showAlertAction: PassthroughSubject<Void, Never> = .init()
     let showActionSheetAction: PassthroughSubject<Void, Never> = .init()
+    let stateSubject: CurrentValueSubject<SportEventsViewState, Never> = .init(.loading)
+    let dataSubject: CurrentValueSubject<[Storable], Never> = .init([])
+    let createSportEventAction: PassthroughSubject<Void, Never> = .init()
     
     init(container: Container) {
         self.container = container
@@ -23,7 +26,13 @@ struct SportEventsContainer {
     
     func register() {
         container.register(SportEventsViewModelProtocol.self) { resolver in
-            SportEventsViewModel(storageRepository: resolver.resolve(StorageRepositoryProtocol.self)!)
+            SportEventsViewModel(
+                storageRepository: resolver.resolve(StorageRepositoryProtocol.self)!,
+                stateSubject: stateSubject,
+                dataSubject: dataSubject,
+                createSportEventAction: createSportEventAction,
+                showAlertAction: showAlertAction
+            )
         }
         
         container.register(SportEventsViewController.self) { _, viewModel in
