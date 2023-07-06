@@ -6,7 +6,7 @@
 //
 
 import Combine
-import UIKit
+import Foundation
 
 protocol SportEventsViewModelProtocol: AnyObject {
     var stateSubject: CurrentValueSubject<SportEventsViewState, Never> { get }
@@ -25,6 +25,6 @@ protocol SportEventsItemViewModelProtocol {
     var name: String { get }
     var place: String { get }
     var duration: String { get }
-    var icon: UIImage? { get }
-    var iconColor: UIColor { get }
+    var iconName: String { get }
+    var iconColor: SportEventsItemViewModel.Color { get }
 }

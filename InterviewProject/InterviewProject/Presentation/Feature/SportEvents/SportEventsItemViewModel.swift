@@ -5,7 +5,7 @@
 //  Created by Marek Pohl on 19.02.2022.
 //
 
-import UIKit
+import Foundation
 
 struct SportEventsItemViewModel: SportEventsItemViewModelProtocol {
     // MARK: - Properties
@@ -18,12 +18,18 @@ struct SportEventsItemViewModel: SportEventsItemViewModelProtocol {
     var duration: String {
         event.duration.asString(style: .positional)
     }
-    var icon: UIImage? {
-        event.isRemote ? UIImage(systemName: "cloud.fill") : UIImage(systemName: "externaldrive.fill")
+    var iconName: String {
+        event.isRemote ? "cloud.fill" : "externaldrive.fill"
     }
-    var iconColor: UIColor {
-        event.isRemote ? .systemCyan : .systemGray
+    var iconColor: Color {
+        event.isRemote ? .cyan : .gray
     }
+    
+    enum Color {
+        case cyan
+        case gray
+    }
+    
     private let event: Storable
     
     // MARK: - Initializers
