@@ -312,30 +312,6 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
-		447263D227C180100006663D /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				447263D327C180260006663D /* SportEventsProtocols.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		447263D727C18CD90006663D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				447263D827C18D0D0006663D /* SportEventsCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		447263DA27C1995E0006663D /* ViewData */ = {
-			isa = PBXGroup;
-			children = (
-				447263DB27C199750006663D /* SportEventsViewState.swift */,
-			);
-			path = ViewData;
-			sourceTree = "<group>";
-		};
 		447263DD27C19AF80006663D /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,53 +347,13 @@
 		447263E327C221270006663D /* CreateSportEvent */ = {
 			isa = PBXGroup;
 			children = (
-				447263F327C230C70006663D /* View */,
-				447263ED27C222B70006663D /* Protocols */,
-				447263EA27C2227C0006663D /* ViewModel */,
-				447263E727C221780006663D /* Coordinator */,
-				447263E427C2214E0006663D /* Controller */,
-			);
-			path = CreateSportEvent;
-			sourceTree = "<group>";
-		};
-		447263E427C2214E0006663D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				447263F427C230DD0006663D /* CreateSportEventView.swift */,
+				447263EE27C222C40006663D /* CreateSportEventProtocols.swift */,
+				447263EB27C222880006663D /* CreateSportEventViewModel.swift */,
+				447263E827C2218E0006663D /* CreateSportEventCoordinator.swift */,
 				447263E527C221610006663D /* CreateSportEventViewController.swift */,
 			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		447263E727C221780006663D /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				447263E827C2218E0006663D /* CreateSportEventCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		447263EA27C2227C0006663D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				447263EB27C222880006663D /* CreateSportEventViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		447263ED27C222B70006663D /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				447263EE27C222C40006663D /* CreateSportEventProtocols.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		447263F327C230C70006663D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				447263F427C230DD0006663D /* CreateSportEventView.swift */,
-			);
-			path = View;
+			path = CreateSportEvent;
 			sourceTree = "<group>";
 		};
 		44F6BA3B27C164B2006F2EE7 = {
@@ -499,22 +435,15 @@
 		44F6BA8127C170FF006F2EE7 /* SportEvents */ = {
 			isa = PBXGroup;
 			children = (
-				447263DA27C1995E0006663D /* ViewData */,
-				447263D727C18CD90006663D /* View */,
-				447263D227C180100006663D /* Protocols */,
-				44F6BA8B27C17C52006F2EE7 /* ViewModel */,
-				44F6BA8827C176EB006F2EE7 /* Coordinator */,
-				44F6BA8227C17239006F2EE7 /* Controller */,
-			);
-			path = SportEvents;
-			sourceTree = "<group>";
-		};
-		44F6BA8227C17239006F2EE7 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				447263DB27C199750006663D /* SportEventsViewState.swift */,
+				447263D827C18D0D0006663D /* SportEventsCell.swift */,
+				447263D327C180260006663D /* SportEventsProtocols.swift */,
+				447263D027C17E2A0006663D /* SportEventsViewModel.swift */,
+				447263D527C1852F0006663D /* SportEventsItemViewModel.swift */,
+				44F6BA8927C176FF006F2EE7 /* SportEventsCoordinator.swift */,
 				44F6BA8327C172F6006F2EE7 /* SportEventsViewController.swift */,
 			);
-			path = Controller;
+			path = SportEvents;
 			sourceTree = "<group>";
 		};
 		44F6BA8527C174A1006F2EE7 /* Common */ = {
@@ -523,23 +452,6 @@
 				44F6BA8627C174B3006F2EE7 /* AppCoordinator.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		44F6BA8827C176EB006F2EE7 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				44F6BA8927C176FF006F2EE7 /* SportEventsCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		44F6BA8B27C17C52006F2EE7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				447263D027C17E2A0006663D /* SportEventsViewModel.swift */,
-				447263D527C1852F0006663D /* SportEventsItemViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -860,6 +772,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.marekpohl.interviewproject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -888,6 +801,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.marekpohl.interviewproject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -971,7 +885,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
+				minimumVersion = 10.0.0;
 			};
 		};
 		4424D48027C2E3B1009B00FC /* XCRemoteSwiftPackageReference "realm-swift" */ = {
@@ -986,7 +900,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
 			requirement = {
-				kind = upToNextMinorVersion;
+				kind = upToNextMajorVersion;
 				minimumVersion = 2.8.0;
 			};
 		};

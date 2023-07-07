@@ -5,10 +5,12 @@
 //  Created by Marek Pohl on 19.02.2022.
 //
 
+import Combine
 import UIKit
 
 final class SportEventsViewController: UIViewController {
     // MARK: - Properties
+    private var cancellables: Set<AnyCancellable> = []
     private let tableView = UITableView()
     private let viewModel: SportEventsViewModelProtocol
     
@@ -38,6 +40,8 @@ final class SportEventsViewController: UIViewController {
         segmentedControl.pinToEdges(of: view)
         return view
     }()
+    
+    private var dataSource: UITableViewDiffableDataSource<Int, SportEvent>?
     
     // MARK: - Initializers
     init(viewModel: SportEventsViewModelProtocol) {
@@ -125,9 +129,37 @@ private extension SportEventsViewController {
 // MARK: - Data bindings
 private extension SportEventsViewController {
     func bindViewModel() {
-        viewModel.bind(to: tableView)
-        viewModel.stateDidChange = { [weak self] state in
-            self?.handleStateChange(state: state)
+        bindTableView()
+        
+        viewModel.dataSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] data in
+                var snapshot = NSDiffableDataSourceSnapshot<Int, SportEvent>()
+                snapshot.appendSections([0])
+                snapshot.appendItems(data.compactMap { $0 as? SportEvent })
+                
+                self?.dataSource?.apply(snapshot, animatingDifferences: false)
+            }
+            .store(in: &cancellables)
+        
+        viewModel.stateSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                self?.handleStateChange(state: state)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func bindTableView() {
+        dataSource = UITableViewDiffableDataSource(tableView: tableView) { tableView, indexPath, event -> UITableViewCell? in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: SportEventsCell.reuseIdentifier, for: indexPath) as? SportEventsCell else {
+                fatalError("Unable to Dequeue Weather Day Table View Cell")
+            }
+            
+            let viewModel = SportEventsItemViewModel(event: event)
+            cell.configure(with: viewModel)
+            
+            return cell
         }
     }
 }

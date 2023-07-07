@@ -5,17 +5,22 @@
 //  Created by Marek Pohl on 20.02.2022.
 //
 
+import Combine
 import UIKit
 
 final class CreateSportEventCoordinator: Coordinator {
     // MARK: - Properties
     private let navigationController: UINavigationController
-    private var viewModel: CreateSportEventViewModelProtocol?
-    var didSaveSuccessfully: (() -> Void)?
+    private let reloadListAction: PassthroughSubject<Void, Never>
+    private var cancellables: Set<AnyCancellable> = []
     
     // MARK: - Initializers
-    init(navigationController: UINavigationController) {
+    init(
+        navigationController: UINavigationController,
+        reloadListAction: PassthroughSubject<Void, Never>
+    ) {
         self.navigationController = navigationController
+        self.reloadListAction = reloadListAction
     }
     
     // MARK: - Coordinator
@@ -25,28 +30,38 @@ final class CreateSportEventCoordinator: Coordinator {
     
     override func start() {
         let createSportEventViewModel = DIContainer.container.resolve(CreateSportEventViewModelProtocol.self)!
-        createSportEventViewModel.didCancelEventCreation = { [weak self] in
-            guard let self = self else {
-                return
+        createSportEventViewModel.cancelEventCreationAction
+            .sink { [weak self] in
+                guard let self else {
+                    return
+                }
+                self.navigationController.dismiss(animated: true)
+                self.didFinish?(self)
             }
-            self.navigationController.dismiss(animated: true)
-            self.didFinish?(self)
-        }
-        createSportEventViewModel.didSaveEvent = { [weak self] in
-            guard let self = self else {
-                return
+            .store(in: &cancellables)
+        
+        createSportEventViewModel.saveEventAction
+            .sink { [weak self] in
+                guard let self else {
+                    return
+                }
+                self.navigationController.dismiss(animated: true)
+                self.didFinish?(self)
+                self.reloadListAction.send()
             }
-            self.navigationController.dismiss(animated: true)
-            self.didFinish?(self)
-            self.didSaveSuccessfully?()
-        }
-        createSportEventViewModel.showAlert = { [weak self] in
-            self?.showAlert()
-        }
-        createSportEventViewModel.showActionSheet = { [weak self] in
-            self?.showActionSheet()
-        }
-        viewModel = createSportEventViewModel
+            .store(in: &cancellables)
+        
+        createSportEventViewModel.showAlertAction
+            .sink { [weak self] in
+                self?.showAlert()
+            }
+            .store(in: &cancellables)
+        
+        createSportEventViewModel.showActionSheetAction
+            .sink { [weak self] in
+                self?.showActionSheet(viewModel: createSportEventViewModel)
+            }
+            .store(in: &cancellables)
         
         let createSportEventViewController = DIContainer.container.resolve(CreateSportEventViewController.self, argument: createSportEventViewModel)!
         let createSportEventNavigationController = UINavigationController(rootViewController: createSportEventViewController)
@@ -63,13 +78,13 @@ private extension CreateSportEventCoordinator {
         navigationController.presentedViewController?.present(alertController, animated: true)
     }
     
-    func showActionSheet() {
+    func showActionSheet(viewModel: CreateSportEventViewModelProtocol) {
         let alertController = UIAlertController(title: "Which storage?", message: nil, preferredStyle: .actionSheet)
-        let remoteAction = UIAlertAction(title: "Remote", style: .default) { [weak self] action in
-            self?.viewModel?.saveEvent(storageType: .server)
+        let remoteAction = UIAlertAction(title: "Remote", style: .default) { action in
+            viewModel.saveEvent(storageType: .server)
         }
-        let localAction = UIAlertAction(title: "Local", style: .default) { [weak self] action in
-            self?.viewModel?.saveEvent(storageType: .local)
+        let localAction = UIAlertAction(title: "Local", style: .default) { action in
+            viewModel.saveEvent(storageType: .local)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(remoteAction)

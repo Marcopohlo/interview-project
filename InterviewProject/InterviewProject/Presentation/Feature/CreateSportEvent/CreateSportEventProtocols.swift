@@ -5,13 +5,14 @@
 //  Created by Marek Pohl on 20.02.2022.
 //
 
+import Combine
 import Foundation
 
 protocol CreateSportEventViewModelProtocol: AnyObject {
-    var didCancelEventCreation: (() -> Void)? { get set }
-    var didSaveEvent: (() -> Void)? { get set }
-    var showAlert: (() -> Void)? { get set }
-    var showActionSheet: (() -> Void)? { get set }
+    var cancelEventCreationAction: PassthroughSubject<Void, Never> { get }
+    var saveEventAction: PassthroughSubject<Void, Never> { get }
+    var showAlertAction: PassthroughSubject<Void, Never> { get }
+    var showActionSheetAction: PassthroughSubject<Void, Never> { get }
     
     func saveEvent(storageType: StorageType)
     func didTapCancelButton()

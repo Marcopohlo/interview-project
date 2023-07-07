@@ -53,8 +53,8 @@ final class SportEventsCell: UITableViewCell {
     
     // MARK: - Configuration
     func configure(with viewModel: SportEventsItemViewModelProtocol) {
-        iconImageView.image = viewModel.icon
-        iconImageView.tintColor = viewModel.iconColor
+        iconImageView.image = UIImage(systemName: viewModel.iconName)
+        iconImageView.tintColor = viewModel.iconColor == .cyan ? .systemCyan : .systemGray
         nameLabel.text = viewModel.name
         placeLabel.text = viewModel.place
         durationLabel.text = viewModel.duration

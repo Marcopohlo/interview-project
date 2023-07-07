@@ -5,14 +5,15 @@
 //  Created by Marek Pohl on 19.02.2022.
 //
 
-import UIKit
+import Combine
+import Foundation
 
 protocol SportEventsViewModelProtocol: AnyObject {
-    var createSportEventHandler: (() -> Void)? { get set }
-    var showAlert: (() -> Void)? { get set }
-    var stateDidChange: ((SportEventsViewState) -> Void)? { get set }
+    var stateSubject: CurrentValueSubject<SportEventsViewState, Never> { get }
+    var dataSubject: CurrentValueSubject<[Storable], Never> { get }
+    var createSportEventAction: PassthroughSubject<Void, Never> { get }
+    var showAlertAction: PassthroughSubject<Void, Never> { get }
     
-    func bind(to tableView: UITableView)
     func loadData()
     func refresh()
     func didTapCreateSportEventButton()
@@ -24,6 +25,6 @@ protocol SportEventsItemViewModelProtocol {
     var name: String { get }
     var place: String { get }
     var duration: String { get }
-    var icon: UIImage? { get }
-    var iconColor: UIColor { get }
+    var iconName: String { get }
+    var iconColor: SportEventsItemViewModel.Color { get }
 }
